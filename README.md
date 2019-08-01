@@ -9,8 +9,9 @@ a new retail project
 **以下展示几个主要界面**
 ## 四个主页
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/20190801201108437.gif)
-![在这里插入图片描述](https://github.com/arcticfox1919/ImageHosting/blob/master/home1.png?raw=true)!
-[在这里插入图片描述](https://github.com/arcticfox1919/ImageHosting/blob/master/home2.png?raw=true)
+
+![在这里插入图片描述](https://github.com/arcticfox1919/ImageHosting/blob/master/home1.png?raw=true)
+![在这里插入图片描述](https://github.com/arcticfox1919/ImageHosting/blob/master/home2.png?raw=true)
 ![在这里插入图片描述](https://github.com/arcticfox1919/ImageHosting/blob/master/home3.png?raw=true)
 ![在这里插入图片描述](https://github.com/arcticfox1919/ImageHosting/blob/master/home4.png?raw=true)
 
