@@ -9,19 +9,20 @@ a new retail project
 **以下展示几个主要界面**
 ## 四个主页
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/20190801201108437.gif)
-![在这里插入图片描述](https://img-blog.csdnimg.cn/20190801193820688.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9hcmN0aWNmb3guYmxvZy5jc2RuLm5ldA==,size_16,color_FFFFFF,t_70)![在这里插入图片描述](https://img-blog.csdnimg.cn/20190801193859303.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9hcmN0aWNmb3guYmxvZy5jc2RuLm5ldA==,size_16,color_FFFFFF,t_70)
-![在这里插入图片描述](https://img-blog.csdnimg.cn/20190801193922533.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9hcmN0aWNmb3guYmxvZy5jc2RuLm5ldA==,size_16,color_FFFFFF,t_70)
-![在这里插入图片描述](https://img-blog.csdnimg.cn/20190801193941617.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9hcmN0aWNmb3guYmxvZy5jc2RuLm5ldA==,size_16,color_FFFFFF,t_70)
+![在这里插入图片描述](https://github.com/arcticfox1919/ImageHosting/blob/master/home1.png?raw=true)!
+[在这里插入图片描述](https://github.com/arcticfox1919/ImageHosting/blob/master/home2.png?raw=true)
+![在这里插入图片描述](https://github.com/arcticfox1919/ImageHosting/blob/master/home3.png?raw=true)
+![在这里插入图片描述](https://github.com/arcticfox1919/ImageHosting/blob/master/home4.png?raw=true)
 
 ## 仿淘宝详情页
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/20190801195310576.gif)
 ## 店铺
-![在这里插入图片描述](https://img-blog.csdnimg.cn/20190801195350246.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9hcmN0aWNmb3guYmxvZy5jc2RuLm5ldA==,size_16,color_FFFFFF,t_70)
+![在这里插入图片描述](https://github.com/arcticfox1919/ImageHosting/blob/master/Screenshot_1564658799.png?raw=true)
 
-![在这里插入图片描述](https://img-blog.csdnimg.cn/20190801195445333.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9hcmN0aWNmb3guYmxvZy5jc2RuLm5ldA==,size_16,color_FFFFFF,t_70)
+![在这里插入图片描述](https://github.com/arcticfox1919/ImageHosting/blob/master/Screenshot_1564658808.png?raw=true)
 ## 登录
-![在这里插入图片描述](https://img-blog.csdnimg.cn/20190801195537934.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9hcmN0aWNmb3guYmxvZy5jc2RuLm5ldA==,size_16,color_FFFFFF,t_70)
-![在这里插入图片描述](https://img-blog.csdnimg.cn/20190801195558694.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9hcmN0aWNmb3guYmxvZy5jc2RuLm5ldA==,size_16,color_FFFFFF,t_70)
+![在这里插入图片描述](https://github.com/arcticfox1919/ImageHosting/blob/master/Screenshot_1564658936.png?raw=true)
+![在这里插入图片描述](https://github.com/arcticfox1919/ImageHosting/blob/master/Screenshot_1564658941.png?raw=true)
 
 # 欢迎关注我的公众号：编程之路从0到1
 ![编程之路从0到1](https://img-blog.csdnimg.cn/20190301102949549.jpg)
