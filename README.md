@@ -28,6 +28,7 @@
 
 ## 仿淘宝详情页
 ![](https://img-blog.csdnimg.cn/20190801195310576.gif)
+
 ## 店铺
 ![](https://img-blog.csdnimg.cn/20190801203300152.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9hcmN0aWNmb3guYmxvZy5jc2RuLm5ldA==,size_16,color_FFFFFF,t_70)
 
