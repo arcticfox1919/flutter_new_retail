@@ -16,18 +16,18 @@
 
 **以下展示几个主要界面**
 ## 四个主页
-![](https://img-blog.csdnimg.cn/20190801201108437.gif)
+![](https://gitee.com/arcticfox1919/ImageHosting/raw/master/home_gif.gif)
 
-![](https://img-blog.csdnimg.cn/20190801203030630.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9hcmN0aWNmb3guYmxvZy5jc2RuLm5ldA==,size_16,color_FFFFFF,t_70)
+![](https://gitee.com/arcticfox1919/ImageHosting/raw/master/home1.png)
 
-![](https://img-blog.csdnimg.cn/20190801203058134.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9hcmN0aWNmb3guYmxvZy5jc2RuLm5ldA==,size_16,color_FFFFFF,t_70)
+![](https://gitee.com/arcticfox1919/ImageHosting/raw/master/home2.png)
 
-![](https://img-blog.csdnimg.cn/2019080120311385.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9hcmN0aWNmb3guYmxvZy5jc2RuLm5ldA==,size_16,color_FFFFFF,t_70)
+![](https://gitee.com/arcticfox1919/ImageHosting/raw/master/home3.png)
 
-![](https://img-blog.csdnimg.cn/20190801203126494.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9hcmN0aWNmb3guYmxvZy5jc2RuLm5ldA==,size_16,color_FFFFFF,t_70)
+![](https://gitee.com/arcticfox1919/ImageHosting/raw/master/home4.png)
 
 ## 仿淘宝详情页
-![](https://img-blog.csdnimg.cn/20190801195310576.gif)
+![](https://gitee.com/arcticfox1919/ImageHosting/raw/master/details_gif.gif)
 
 ## 店铺
 ![](https://img-blog.csdnimg.cn/20190801203300152.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9hcmN0aWNmb3guYmxvZy5jc2RuLm5ldA==,size_16,color_FFFFFF,t_70)
