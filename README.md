@@ -16,15 +16,15 @@
 
 **以下展示几个主要界面**
 ## 四个主页
-![](https://gitee.com/arcticfox1919/ImageHosting/raw/master/home_gif.gif)
+![主页](https://gitee.com/arcticfox1919/ImageHosting/raw/master/home_gif.gif)
 
-![](https://gitee.com/arcticfox1919/ImageHosting/raw/master/home1.png)
+![home1](https://gitee.com/arcticfox1919/ImageHosting/raw/master/home1.png)
 
-![](https://gitee.com/arcticfox1919/ImageHosting/raw/master/home2.png)
+![home2](https://gitee.com/arcticfox1919/ImageHosting/raw/master/home2.png)
 
-![](https://gitee.com/arcticfox1919/ImageHosting/raw/master/home3.png)
+![home3](https://gitee.com/arcticfox1919/ImageHosting/raw/master/home3.png)
 
-![](https://gitee.com/arcticfox1919/ImageHosting/raw/master/home4.png)
+![home4](https://gitee.com/arcticfox1919/ImageHosting/raw/master/home4.png)
 
 ## 仿淘宝详情页
 ![](https://gitee.com/arcticfox1919/ImageHosting/raw/master/details_gif.gif)
