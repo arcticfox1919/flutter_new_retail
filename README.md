@@ -9,9 +9,9 @@
 
 
 
-由于免费的服务器已到期，运行app获取不到测试数据。这里打包了一个本地 [api测试服务器](https://github.com/arcticfox1919/flutter_new_retail/releases/tag/1.0.0)，下载相应的版本运行，并确保模拟器或真机与服务器处于同一内网中
+由于免费的服务器已到期，运行app获取不到测试数据。这里打包了一个本地 [api测试服务器](https://github.com/arcticfox1919/flutter_new_retail/releases)，下载相应的版本运行，并确保模拟器或真机与服务器处于同一内网中
 
-修改`/lib/dao/config.dart`文件，`const SERVER_HOST = 'http://localhost:8080';`即可
+修改`/lib/dao/config.dart`文件，`const SERVER_HOST = 'http://localhost:8081';`即可，其中需要将localhost替换为你的服务器在局域网中的IP地址。
 
 
 **以下展示几个主要界面**
