@@ -1,4 +1,4 @@
 
 
-const SERVER_HOST = 'http://yjh.cgzh.com.cn:8081';
+const SERVER_HOST = 'http://localhost:8081';
 

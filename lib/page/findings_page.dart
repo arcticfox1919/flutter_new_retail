@@ -147,8 +147,8 @@ class FindingTabView extends StatefulWidget {
 }
 
 class _FindingTabViewState extends State<FindingTabView> with AutomaticKeepAliveClientMixin{
-  GlobalKey<RefreshHeaderState> _headerKey = GlobalKey<RefreshHeaderState>();
-  GlobalKey<RefreshFooterState> _footerKey = GlobalKey<RefreshFooterState>();
+  GlobalKey<MaterialHeaderWidgetState> _headerKey = GlobalKey<MaterialHeaderWidgetState>();
+  GlobalKey<MaterialFooterWidgetState> _footerKey = GlobalKey<MaterialFooterWidgetState>();
 
   List<GoodsModel> goodsList = new List<GoodsModel>();
   bool _isLoading = false;
@@ -182,10 +182,10 @@ class _FindingTabViewState extends State<FindingTabView> with AutomaticKeepAlive
             left: AppSize.width(30),
             right: AppSize.width(30)),
         child: EasyRefresh(
-            refreshHeader: MaterialHeader(
+            header: MaterialHeader(
               key: _headerKey,
             ),
-            refreshFooter: MaterialFooter(
+            footer: MaterialFooter(
               key: _footerKey,
             ),
             child: StaggeredGridView.countBuilder(
@@ -201,7 +201,6 @@ class _FindingTabViewState extends State<FindingTabView> with AutomaticKeepAlive
               goodsList = goodsList.reversed.toList();
               setState(()=>{});
             },
-            loadMore: () async {}
         ),
       );
     }

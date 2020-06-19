@@ -99,8 +99,8 @@ class MallPageView extends StatefulWidget {
 }
 
 class _MallPageViewState extends State<MallPageView> with AutomaticKeepAliveClientMixin{
-  GlobalKey<RefreshHeaderState> _headerKey = GlobalKey<RefreshHeaderState>();
-  GlobalKey<RefreshFooterState> _footerKey = GlobalKey<RefreshFooterState>();
+  GlobalKey<MaterialHeaderWidgetState> _headerKey = GlobalKey<MaterialHeaderWidgetState>();
+  GlobalKey<MaterialFooterWidgetState> _footerKey = GlobalKey<MaterialFooterWidgetState>();
 
   bool _isLoading = false;
 
@@ -135,10 +135,10 @@ class _MallPageViewState extends State<MallPageView> with AutomaticKeepAliveClie
             left: AppSize.width(30),
             right: AppSize.width(30)),
         child: EasyRefresh(
-            refreshHeader: MaterialHeader(
+            header: MaterialHeader(
               key: _headerKey,
             ),
-            refreshFooter: MaterialFooter(
+            footer: MaterialFooter(
               key: _footerKey,
             ),
             child: StaggeredGridView.countBuilder(
@@ -154,7 +154,6 @@ class _MallPageViewState extends State<MallPageView> with AutomaticKeepAliveClie
               goodsList = goodsList.reversed.toList();
               setState(()=>{});
             },
-            loadMore: () async {}
         ),
       );
     }

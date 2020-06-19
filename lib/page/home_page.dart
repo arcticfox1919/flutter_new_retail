@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_easyrefresh/easy_refresh.dart';
+import 'package:flutter_easyrefresh/material_footer.dart';
+import 'package:flutter_easyrefresh/material_header.dart';
 import 'package:flutter_swiper/flutter_swiper.dart';
 import 'package:flutter_yjh/dao/home_dao.dart';
 import 'package:flutter_yjh/models/home_entity.dart';
@@ -24,8 +26,8 @@ class HomePage extends StatefulWidget{
 
 class _HomePageState extends State<HomePage>  with AutomaticKeepAliveClientMixin{
 
-  GlobalKey <RefreshHeaderState> _headerKey =  new  GlobalKey <RefreshHeaderState>();
-  GlobalKey <RefreshFooterState> _footerKey =  new  GlobalKey <RefreshFooterState>();
+  GlobalKey<MaterialHeaderWidgetState> _headerKey = GlobalKey<MaterialHeaderWidgetState>();
+  GlobalKey<MaterialFooterWidgetState> _footerKey = GlobalKey<MaterialFooterWidgetState>();
 
   List<HomeListItem> homeList;
 
@@ -492,17 +494,16 @@ class _HomePageState extends State<HomePage>  with AutomaticKeepAliveClientMixin
   Widget _buildList(){
     List<HomeListItem> data = homeList;
     return EasyRefresh(
-        refreshHeader: ClassicsHeader(
+        header: ClassicalHeader(
           bgColor: ThemeColor.appBarBottomBg,
           refreshText:"下拉触发",
           textColor: Colors.white,
           refreshReadyText:"释放刷新",
           refreshingText: "刷新中...",
           refreshedText: "已刷新",
-          showMore:true,
           key: _headerKey,
         ),
-        refreshFooter: ClassicsFooter(
+        footer: ClassicalFooter(
           bgColor: ThemeColor.appBg,
           textColor: ThemeColor.hintTextColor,
           loadText:"上拉触发",
@@ -517,7 +518,7 @@ class _HomePageState extends State<HomePage>  with AutomaticKeepAliveClientMixin
           loadData();
           setState(() {});
         },
-        loadMore: () async {
+        onLoad: () async {
           loadData();
           setState(() {});
         },

@@ -21,8 +21,8 @@ class NearbyBusiness extends StatefulWidget {
 }
 
 class _NearbyBusinessState extends State<NearbyBusiness> {
-  GlobalKey<RefreshHeaderState> _headerKey = GlobalKey<RefreshHeaderState>();
-  GlobalKey<RefreshFooterState> _footerKey = GlobalKey<RefreshFooterState>();
+  GlobalKey<MaterialHeaderWidgetState> _headerKey = GlobalKey<MaterialHeaderWidgetState>();
+  GlobalKey<MaterialFooterWidgetState> _footerKey = GlobalKey<MaterialFooterWidgetState>();
 
   List<StoreModel> storeList = new List<StoreModel>();
   bool _isLoading = false;
@@ -71,10 +71,10 @@ class _NearbyBusinessState extends State<NearbyBusiness> {
             left: AppSize.width(30),
             right: AppSize.width(30)),
         child: EasyRefresh(
-            refreshHeader: MaterialHeader(
+            header: MaterialHeader(
               key: _headerKey,
             ),
-            refreshFooter: MaterialFooter(
+            footer: MaterialFooter(
               key: _footerKey,
             ),
             child: ListView.builder(
@@ -84,7 +84,6 @@ class _NearbyBusinessState extends State<NearbyBusiness> {
               storeList = storeList.reversed.toList();
               setState(()=>{});
             },
-            loadMore: () async {}
         ),
       );
     }

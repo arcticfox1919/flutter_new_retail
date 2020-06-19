@@ -107,8 +107,8 @@ class FamousTabView extends StatefulWidget {
 }
 
 class _FamousTabViewState extends State<FamousTabView> with AutomaticKeepAliveClientMixin{
-  GlobalKey<RefreshHeaderState> _headerKey = GlobalKey<RefreshHeaderState>();
-  GlobalKey<RefreshFooterState> _footerKey = GlobalKey<RefreshFooterState>();
+  GlobalKey<MaterialHeaderWidgetState> _headerKey = GlobalKey<MaterialHeaderWidgetState>();
+  GlobalKey<MaterialFooterWidgetState> _footerKey = GlobalKey<MaterialFooterWidgetState>();
 
   List<StoreModel> storeList = new List<StoreModel>();
   bool _isLoading = false;
@@ -142,10 +142,10 @@ class _FamousTabViewState extends State<FamousTabView> with AutomaticKeepAliveCl
             left: AppSize.width(30),
             right: AppSize.width(30)),
         child: EasyRefresh(
-            refreshHeader: MaterialHeader(
+            header: MaterialHeader(
               key: _headerKey,
             ),
-            refreshFooter: MaterialFooter(
+            footer: MaterialFooter(
               key: _footerKey,
             ),
             child: ListView.builder(
@@ -155,7 +155,6 @@ class _FamousTabViewState extends State<FamousTabView> with AutomaticKeepAliveCl
               storeList = storeList.reversed.toList();
               setState(()=>{});
             },
-            loadMore: () async {}
         ),
       );
     }

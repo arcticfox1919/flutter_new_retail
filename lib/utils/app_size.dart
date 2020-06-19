@@ -5,19 +5,19 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 class AppSize{
 
   static init(BuildContext context){
-    ScreenUtil.instance = ScreenUtil.getInstance()..init(context);
+    ScreenUtil.init(context);
   }
 
   static height(value){
-    return ScreenUtil.getInstance().setHeight(value.toDouble());
+    return ScreenUtil().setHeight(value.toDouble());
   }
 
   static width(value){
-    return ScreenUtil.getInstance().setWidth(value.toDouble());
+    return ScreenUtil().setWidth(value.toDouble());
   }
 
   static sp(value){
-    return ScreenUtil.getInstance().setSp(value.toDouble());
+    return ScreenUtil().setSp(value.toDouble());
   }
 
   static instance() => ScreenUtil;

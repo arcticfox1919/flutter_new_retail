@@ -122,8 +122,8 @@ class OrderFormTabView extends StatefulWidget {
 }
 
 class _OrderFormTabViewState extends State<OrderFormTabView> {
-  GlobalKey<RefreshHeaderState> _headerKey = GlobalKey<RefreshHeaderState>();
-  GlobalKey<RefreshFooterState> _footerKey = GlobalKey<RefreshFooterState>();
+  GlobalKey<MaterialHeaderWidgetState> _headerKey = GlobalKey<MaterialHeaderWidgetState>();
+  GlobalKey<MaterialFooterWidgetState> _footerKey = GlobalKey<MaterialFooterWidgetState>();
 
   List<OrderFormListItem> listData;
 
@@ -171,16 +171,13 @@ class _OrderFormTabViewState extends State<OrderFormTabView> {
     return Container(
       margin: EdgeInsets.only(top: AppSize.height(30)),
       child: EasyRefresh(
-        refreshHeader: MaterialHeader(
+        header: MaterialHeader(
           key: _headerKey,
         ),
-        refreshFooter: MaterialFooter(
+        footer: MaterialFooter(
           key: _footerKey,
         ),
         onRefresh: () async {
-
-        },
-        loadMore:  () async {
 
         },
         child: ListView.builder(
