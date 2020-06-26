@@ -18,7 +18,7 @@ class _NewShopState extends State<NewShop> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: MyAppBar(
-            preferredSize: Size.fromHeight(AppSize.height(160)),
+            height: AppSize.height(160),
             child: CommonBackTopBar(title: "新增店铺",
                 onBack:()=>Navigator.pop(context))
         ),

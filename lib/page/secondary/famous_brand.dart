@@ -55,7 +55,7 @@ class _FamousBrandState extends State<FamousBrand> with SingleTickerProviderStat
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: MyAppBar(
-        preferredSize: Size.fromHeight(AppSize.height(160)),
+          height: AppSize.height(160),
         child: CustomBackBar(onBack:()=>Navigator.pop(context))),
 
       body: Container(

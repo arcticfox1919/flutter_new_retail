@@ -72,7 +72,7 @@ class _ShopReferrerPageState extends State<ShopReferrerPage> with SingleTickerPr
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: MyAppBar(
-            preferredSize: Size.fromHeight(AppSize.height(160)),
+            height: AppSize.height(160),
             child: CommonBackTopBar(title: "门店/推荐人",
                 onBack:()=>Navigator.pop(context))
         ),

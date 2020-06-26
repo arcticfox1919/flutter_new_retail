@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_easyrefresh/easy_refresh.dart';
-import 'package:flutter_easyrefresh/material_footer.dart';
-import 'package:flutter_easyrefresh/material_header.dart';
 import 'package:flutter_swiper/flutter_swiper.dart';
 import 'package:flutter_yjh/dao/home_dao.dart';
 import 'package:flutter_yjh/models/home_entity.dart';
@@ -16,9 +14,6 @@ import 'package:flutter_yjh/view/customize_appbar.dart';
 import 'package:flutter_yjh/view/theme_ui.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 
-///
-/// app 首页
-///
 class HomePage extends StatefulWidget{
   @override
   _HomePageState createState() => _HomePageState();
@@ -26,24 +21,21 @@ class HomePage extends StatefulWidget{
 
 class _HomePageState extends State<HomePage>  with AutomaticKeepAliveClientMixin{
 
-  GlobalKey<MaterialHeaderWidgetState> _headerKey = GlobalKey<MaterialHeaderWidgetState>();
-  GlobalKey<MaterialFooterWidgetState> _footerKey = GlobalKey<MaterialFooterWidgetState>();
-
   List<HomeListItem> homeList;
 
   @override
   Widget build(BuildContext context) {
     super.build(context);
     return Scaffold(
-        appBar: MyAppBar(
-          preferredSize: Size.fromHeight(AppSize.height(160)),
-          child: HomeTopBar(),
-        ),
-        body:Container(
-              color: Color(0xfff5f6f7),
-              child: homeList == null? Center(
-                  child: CircularProgressIndicator()):_buildList()
-          ),
+      appBar: MyAppBar(
+        height: AppSize.height(160),
+        child: HomeTopBar(),
+      ),
+      body:Container(
+          color: Color(0xfff5f6f7),
+          child: homeList == null? Center(
+              child: CircularProgressIndicator()):_buildList()
+      ),
     );
   }
 
@@ -57,24 +49,72 @@ class _HomePageState extends State<HomePage>  with AutomaticKeepAliveClientMixin
     super.initState();
   }
 
-  bool isRecorded = false;
+  ///
+  ///  构建列表主体
+  ///
+  Widget _buildList(){
+    List<HomeListItem> data = homeList;
+    return EasyRefresh(
+        header: ClassicalHeader(
+          bgColor: ThemeColor.appBarBottomBg,
+          refreshText:"下拉触发",
+          textColor: Colors.white,
+          refreshReadyText:"释放刷新",
+          refreshingText: "刷新中...",
+          refreshedText: "已刷新",
+        ),
+        footer: ClassicalFooter(
+          bgColor: ThemeColor.appBg,
+          textColor: ThemeColor.hintTextColor,
+          loadText:"上拉触发",
+          loadReadyText:"加载更多",
+          loadingText:"正在加载",
+          loadedText:"加载完成",
+          noMoreText:"没有更多",
+        ),
 
+        onRefresh: () async {
+          loadData();
+          setState(() {});
+        },
+        onLoad: () async {
+          loadData();
+          setState(() {});
+        },
 
-  createHeadNav() {
-    _getImgBtns(int op) {
-      int i = op == 0 ? 0 : 4;
-      int offset = 4 - i;
-      var imageBtns = List<Widget>();
-      for (; i < HEAD_NAV_TEXT.length - offset; i++) {
-        imageBtns.add(
-            ImageButton('images/head_menu_${i + 1}.png',
-                func: navigate,
-                text: HEAD_NAV_TEXT[i],
-                textStyle: ThemeTextStyle.primaryStyle2));
-      }
-      return imageBtns;
+        child: ListView.builder(
+          itemCount: data?.length,
+          itemBuilder: (context, i) {
+            if (data[i] is HeadMenuItem) {
+              return _createHeadNav();
+            } else if (data[i] is ScrollMenuItem) {
+              return _createScrollNav();
+            } else if (data[i] is GridMenuItem) {
+              return _createGridNav();
+            } else if (data[i] is AdBarItem) {
+              return _createAdBar();
+            } else if (data[i] is OfferItem) {
+              return _createOfferBar();
+            } else {
+              return _createNearbyStoreItem(data[i] as StoreModel, i);
+            }
+          },
+        ));
+  }
+
+  /// 头部导航菜单
+  _createHeadNav() {
+
+    /// 生成一行网格菜单
+    _getImgBtns(int lineNo) {
+      int offset = lineNo == 0 ? 0 : 4;
+      return List<Widget>.generate(4, (index){
+        return ImageButton('images/head_menu_${index+ offset + 1}.png',
+            func: navigate,
+            text: HEAD_NAV_TEXT[index+ offset],
+            textStyle: ThemeTextStyle.primaryStyle2);
+      });
     }
-
 
     return Container(
       color: Colors.white,
@@ -89,6 +129,7 @@ class _HomePageState extends State<HomePage>  with AutomaticKeepAliveClientMixin
                 bottom: AppSize.width(12)),
             height: AppSize.height(430),
             child: Swiper(
+              autoplay:true,
               itemBuilder: (BuildContext context, int index) {
                 return ClipRRect(
                   borderRadius: BorderRadius.circular(8.0),
@@ -108,12 +149,12 @@ class _HomePageState extends State<HomePage>  with AutomaticKeepAliveClientMixin
             padding: EdgeInsets.symmetric(vertical: AppSize.height(30)),
             child: Column(
               children: <Widget>[
-                Padding(
-                  padding:EdgeInsets.only(bottom: AppSize.height(30)),
-                  child: Row(
+                Row(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: _getImgBtns(0)),
+                SizedBox(
+                  height: AppSize.height(30),
                 ),
                 Row(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -127,7 +168,8 @@ class _HomePageState extends State<HomePage>  with AutomaticKeepAliveClientMixin
     );
   }
 
-  createScrollNav() {
+  /// 横向滚动菜单
+  _createScrollNav() {
     return Container(
       decoration: ThemeDecoration.card,
       margin: EdgeInsets.symmetric(vertical: AppSize.height(30),
@@ -148,6 +190,56 @@ class _HomePageState extends State<HomePage>  with AutomaticKeepAliveClientMixin
     );
   }
 
+  /// 网格导航菜单
+  _createGridNav() {
+    return Container(
+        decoration: ThemeDecoration.card,
+        margin: EdgeInsets.only(
+            bottom: AppSize.height(30),
+            left: AppSize.height(30),
+            right: AppSize.height(30)),
+        child: Column(
+            children: <Widget>[
+              Table(
+                border: TableBorder(
+                    bottom: BorderSide(color: ThemeColor.appBg),
+                    horizontalInside: BorderSide(color: ThemeColor.appBg),
+                    verticalInside: BorderSide(color: ThemeColor.appBg)),
+                children: <TableRow>[
+                  TableRow(children: <Widget>[
+                    _getRlImageBtn(
+                        "签到打卡", "签到领积分", "images/check_in.png",
+                        'images/check_in_text.png',navigate),
+                    _getRlImageBtn(
+                        "积分抽奖", "好礼转不停", "images/lottery.png",
+                        'images/points_lottery_text.png',navigate)
+                  ]),
+                  TableRow(children: <Widget>[
+                    _getRlImageBtn(
+                        "新人专享", "新人专享福利", "images/new_talent.png",
+                        'images/newcomer_text.png',navigate),
+                    _getRlImageBtn("新增店铺", "好货不贵", "images/new_store.png",
+                        'images/new_shop_text.png',navigate)
+                  ])
+                ],
+              ),
+              Padding(
+                padding: EdgeInsets.only(left: AppSize.width(30),
+                    top: AppSize.width(30),bottom: AppSize.width(30)),
+                child: Row(
+                    children: <Widget>[
+                      Image.asset("images/headline_icon.png"),
+                      Padding(
+                        padding: EdgeInsets.only(left: AppSize.width(30)),
+                        child: Text("Q**35分钟前获得600积分", style: TextStyle(
+                            color: Color(0xff333333),
+                            fontSize: AppSize.sp(40)),),)
+
+                    ]),
+              )
+            ]));
+  }
+
   // 封装每个网格菜单中的Image 和 Text
   _getRlImageBtn(String title, String subtitle, String imgPath, String textPath, Function callback) {
     return InkWell(
@@ -158,71 +250,22 @@ class _HomePageState extends State<HomePage>  with AutomaticKeepAliveClientMixin
           Column(
             mainAxisSize: MainAxisSize.min,
             crossAxisAlignment: CrossAxisAlignment.center,
-          children: <Widget>[
-            Image.asset(textPath,width: AppSize.width(200),height: AppSize.height(60)),
-            Text(subtitle, style: TextStyle(
-                fontSize: AppSize.sp(32), color: Color(0xff666666)))
-          ],
-        ), Image.asset(imgPath,
-            width: AppSize.width(260), height: AppSize.height(260))
+            children: <Widget>[
+              Image.asset(textPath,width: AppSize.width(200),height: AppSize.height(60)),
+              Text(subtitle, style: TextStyle(
+                  fontSize: AppSize.sp(32), color: Color(0xff666666)))
+            ],
+          ), Image.asset(imgPath,
+              width: AppSize.width(260), height: AppSize.height(260))
         ],
       ),
     );
   }
 
-
-  createGridNav() {
+  /// 广告横幅项
+  _createAdBar() {
     return Container(
-      decoration: ThemeDecoration.card,
-        margin: EdgeInsets.only(
-            bottom: AppSize.height(30),
-            left: AppSize.height(30),
-            right: AppSize.height(30)),
-        child: Column(
-            children: <Widget>[
-              Table(
-              border: TableBorder(
-                  bottom: BorderSide(color: ThemeColor.appBg),
-                  horizontalInside: BorderSide(color: ThemeColor.appBg),
-                  verticalInside: BorderSide(color: ThemeColor.appBg)),
-              children: <TableRow>[
-                TableRow(children: <Widget>[
-                  _getRlImageBtn(
-                      "签到打卡", "签到领积分", "images/check_in.png",
-                      'images/check_in_text.png',navigate),
-                  _getRlImageBtn(
-                      "积分抽奖", "好礼转不停", "images/lottery.png",
-                      'images/points_lottery_text.png',navigate)
-                ]),
-                TableRow(children: <Widget>[
-                  _getRlImageBtn(
-                      "新人专享", "新人专享福利", "images/new_talent.png",
-                      'images/newcomer_text.png',navigate),
-                  _getRlImageBtn("新增店铺", "好货不贵", "images/new_store.png",
-                      'images/new_shop_text.png',navigate)
-                ])
-              ],
-            ),
-            Padding(
-              padding: EdgeInsets.only(left: AppSize.width(30),
-                  top: AppSize.width(30),bottom: AppSize.width(30)),
-              child: Row(
-                  children: <Widget>[
-                    Image.asset("images/headline_icon.png"),
-                    Padding(
-                      padding: EdgeInsets.only(left: AppSize.width(30)),
-                      child: Text("Q**35分钟前获得600积分", style: TextStyle(
-                          color: Color(0xff333333),
-                          fontSize: AppSize.sp(40)),),)
-
-                  ]),
-            )
-            ]));
-  }
-
-  createAdBar() {
-    return Container(
-      decoration: ThemeDecoration.card,
+        decoration: ThemeDecoration.card,
         margin: EdgeInsets.only(
             bottom: AppSize.height(30),
             left: AppSize.height(30),
@@ -234,8 +277,8 @@ class _HomePageState extends State<HomePage>  with AutomaticKeepAliveClientMixin
     );
   }
 
-  // 优惠栏
-  createOfferBar(){
+  /// 特惠信息项
+  _createOfferBar(){
     return Container(
         padding: EdgeInsets.symmetric(vertical: AppSize.height(30)),
         margin: EdgeInsets.only(
@@ -332,9 +375,9 @@ class _HomePageState extends State<HomePage>  with AutomaticKeepAliveClientMixin
     );
   }
 
-  // 附近商家列表Item
-  createNearbyStoreItem(StoreModel item, int type) {
-    var _pro_name = ["xxxx项目","xxxx服务","wwww商品"];
+  /// 附近商家项
+  _createNearbyStoreItem(StoreModel item, int type) {
+    var proName = ["xxxx项目","xxxx服务","wwww商品"];
 
     // 物品卡片
     _getImgBtn(_item) {
@@ -342,7 +385,7 @@ class _HomePageState extends State<HomePage>  with AutomaticKeepAliveClientMixin
           Expanded(
               child: InkWell(
                 onTap: (){
-                  Routes.instance.navigateTo(context, Routes.store_details,item.id.toString());
+                  Routes().navigateTo(context, Routes.store_details,item.id.toString());
                 },
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
@@ -355,11 +398,11 @@ class _HomePageState extends State<HomePage>  with AutomaticKeepAliveClientMixin
                         child: SizedBox(
                             height: AppSize.height(259),
                             child: ClipRRect(child: CachedNetworkImage(imageUrl:
-                              _item.products[i].img, fit: BoxFit.cover,),
+                            _item.products[i].img, fit: BoxFit.cover,),
                                 borderRadius: BorderRadius.circular(6)
                             )
                         )),
-                    Text(_pro_name[i],
+                    Text(proName[i],
                       softWrap: false,
                       overflow: TextOverflow.ellipsis,
                       style: ThemeTextStyle.menuStyle3,),
@@ -438,7 +481,7 @@ class _HomePageState extends State<HomePage>  with AutomaticKeepAliveClientMixin
         padding: EdgeInsets.only(
             left:AppSize.width(30),
             right:AppSize.width(30),
-          bottom: AppSize.width(20)
+            bottom: AppSize.width(20)
         ),
         decoration: ThemeDecoration.card,
         child: Column(
@@ -446,12 +489,12 @@ class _HomePageState extends State<HomePage>  with AutomaticKeepAliveClientMixin
             Container(
               height: AppSize.height(100),
               child: Center(
-                child:Image.asset("images/home_near_store.png")
+                  child:Image.asset("images/home_near_store.png")
               ),
             ),
             Padding(
-              padding: EdgeInsets.only(bottom: AppSize.height(30)),
-              child: ThemeView.divider()
+                padding: EdgeInsets.only(bottom: AppSize.height(30)),
+                child: ThemeView.divider()
             ),
           ]..addAll(contentList),
         ),
@@ -474,82 +517,16 @@ class _HomePageState extends State<HomePage>  with AutomaticKeepAliveClientMixin
 
   void navigate(String name){
     int i = HEAD_NAV_TEXT.indexOf(name);
-    if(i != -1){
-      Routes.instance.navigateTo(context, HEAD_NAV_PATH[i]);
-    }else{
-      switch(name){
-        case '积分抽奖':
-          Routes.instance.navigateTo(context, Routes.POINTS_LOTTERY);
-          break;
-        case '新增店铺':
-          Routes.instance.navigateTo(context, Routes.NEW_SHOP);
-          break;
-        case '超值特惠':
-          Routes.instance.navigateTo(context, Routes.SUPER_DISCOUNT);
-          break;
-      }
-    }
-  }
-
-  Widget _buildList(){
-    List<HomeListItem> data = homeList;
-    return EasyRefresh(
-        header: ClassicalHeader(
-          bgColor: ThemeColor.appBarBottomBg,
-          refreshText:"下拉触发",
-          textColor: Colors.white,
-          refreshReadyText:"释放刷新",
-          refreshingText: "刷新中...",
-          refreshedText: "已刷新",
-          key: _headerKey,
-        ),
-        footer: ClassicalFooter(
-          bgColor: ThemeColor.appBg,
-          textColor: ThemeColor.hintTextColor,
-          loadText:"上拉触发",
-          loadReadyText:"加载更多",
-          loadingText:"正在加载",
-          loadedText:"加载完成",
-          noMoreText:"没有更多",
-          key: _footerKey,
-        ),
-
-        onRefresh: () async {
-          loadData();
-          setState(() {});
-        },
-        onLoad: () async {
-          loadData();
-          setState(() {});
-        },
-        child: ListView.builder(
-          itemCount: data?.length,
-          itemBuilder: (context, i) {
-            if (data[i] is HeadMenuItem) {
-              return createHeadNav();
-            } else if (data[i] is ScrollMenuItem) {
-              return createScrollNav();
-            } else if (data[i] is GridMenuItem) {
-              return createGridNav();
-            } else if (data[i] is AdBarItem) {
-              return createAdBar();
-            } else if (data[i] is OfferItem) {
-              return createOfferBar();
-            } else {
-              return createNearbyStoreItem(data[i] as StoreModel, i);
-            }
-          },
-        ));
   }
 
   void loadData() async {
     StoreEntity stores =  await HomeDao.fetch();
-    var result = new List<HomeListItem>();
-    result.add(new HeadMenuItem());
-    result.add(new ScrollMenuItem());
-    result.add(new GridMenuItem());
-    result.add(new AdBarItem());
-    result.add(new OfferItem());
+    var result = List<HomeListItem>();
+    result.add(HeadMenuItem());
+    result.add(ScrollMenuItem());
+    result.add(GridMenuItem());
+    result.add(AdBarItem());
+    result.add(OfferItem());
 
     if(stores != null) {
       result.addAll(stores.stores);
@@ -560,4 +537,3 @@ class _HomePageState extends State<HomePage>  with AutomaticKeepAliveClientMixin
     });
   }
 }
-

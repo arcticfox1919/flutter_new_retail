@@ -5,7 +5,6 @@ import 'package:flutter_yjh/page/home_page.dart';
 import 'package:flutter_yjh/page/orderform_page.dart';
 import 'package:flutter_yjh/page/personal_page.dart';
 import 'package:flutter_yjh/utils/app_size.dart';
-import 'package:flutter_yjh/utils/constants.dart';
 import 'package:flutter_yjh/view/my_icons.dart.dart';
 
 class IndexPage extends StatefulWidget {
@@ -41,7 +40,6 @@ class _IndexPageState extends State<IndexPage>  with AutomaticKeepAliveClientMix
     super.build(context);
     // 初始化屏幕适配包
     AppSize.init(context);
-    Screen.init(context);
     return Scaffold(
       bottomNavigationBar: BottomNavigationBar(
           type: BottomNavigationBarType.fixed,

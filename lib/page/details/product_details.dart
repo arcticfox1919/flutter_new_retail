@@ -105,7 +105,9 @@ class _ProductDetailsState extends State<ProductDetails> with SingleTickerProvid
                           if(notification is ScrollUpdateNotification
                               && notification.depth == 0){
                             _onScroll(notification.metrics.pixels);
+                            return true;
                           }
+                          return false;
                         },
                         child: ListView.builder(
                             controller: listController,
@@ -118,14 +120,14 @@ class _ProductDetailsState extends State<ProductDetails> with SingleTickerProvid
                   opacity: appBarAlpha,
                   child: Container(
                     color: Colors.white,
-                    padding: EdgeInsets.only(top: Screen.statusH()),
+                    padding: EdgeInsets.only(top: Screen.statusH),
                     child: Padding(
                       padding: EdgeInsets.symmetric(vertical: AppSize.height(10)),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: <Widget>[
                           SizedBox(
-                            width: Screen.width()*0.6,
+                            width: Screen.width*0.6,
                             height: AppSize.height(100),
                             child: TabBar(
                               onTap: (i){
@@ -149,7 +151,7 @@ class _ProductDetailsState extends State<ProductDetails> with SingleTickerProvid
                 Positioned(
                   width: AppSize.width(90),
                   height: AppSize.width(90),
-                  top: Screen.statusH()+AppSize.height(15),
+                  top: Screen.statusH+AppSize.height(15),
                   left: AppSize.width(30),
                   child: Opacity(
                     opacity: 1-backBtnAlpha,
@@ -167,7 +169,7 @@ class _ProductDetailsState extends State<ProductDetails> with SingleTickerProvid
                 Positioned(
                   width: AppSize.width(90),
                   height: AppSize.width(90),
-                  top: Screen.statusH()+AppSize.height(15),
+                  top: Screen.statusH+AppSize.height(15),
                   left: AppSize.width(30),
                   child: Opacity(
                     opacity: backBtnAlpha,
@@ -343,7 +345,7 @@ class _ProductDetailsState extends State<ProductDetails> with SingleTickerProvid
         CachedNetworkImage(
             imageUrl: goodsModel.photo,
             fit: BoxFit.fill,
-            height: Screen.width()),
+            height: Screen.width),
         Container(
           color: Colors.white,
           padding: EdgeInsets.symmetric(vertical: AppSize.height(30),

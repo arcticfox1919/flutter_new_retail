@@ -29,7 +29,7 @@ class _LoginState extends State<Login> {
           removeTop: true,
           child: Stack(
             children: <Widget>[
-              ArcBackground(Screen.width(), AppSize.height(800)),
+              ArcBackground(Screen.width, AppSize.height(800)),
               Container(
                 margin: EdgeInsets.only(
                     top: AppSize.height(380),
@@ -84,7 +84,7 @@ class _LoginState extends State<Login> {
                         ]),
                     InkWell(
                       child: Container(
-                        width: Screen.width(),
+                        width: Screen.width,
                         margin:
                             EdgeInsets.symmetric(vertical: AppSize.height(30)),
                         padding:
@@ -140,7 +140,7 @@ class _LoginState extends State<Login> {
                 ),
               ),
               Positioned(
-                width: Screen.width(),
+                width: Screen.width,
                 top: AppSize.height(320),
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
@@ -180,7 +180,7 @@ class _LoginState extends State<Login> {
                 bottom: AppSize.height(150)),
               
               Positioned(
-                top: Screen.statusH()+AppSize.height(30),
+                top: Screen.statusH+AppSize.height(30),
                 left: AppSize.width(30),
                 child: InkWell(
                   onTap: (){

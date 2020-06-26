@@ -18,7 +18,7 @@ class _FavoritePageState extends State<FavoritePage> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: MyAppBar(
-            preferredSize: Size.fromHeight(AppSize.height(160)),
+            height: AppSize.height(160),
             child: CommonBackTopBar(title: "我的收藏",
                 onBack:()=>Navigator.pop(context))
         ),

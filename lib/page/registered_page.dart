@@ -30,7 +30,7 @@ class _RegisteredState extends State<Registered> {
           child: SingleChildScrollView(
             child: Stack(
               children: <Widget>[
-                ArcBackground(Screen.width(), AppSize.height(800)),
+                ArcBackground(Screen.width, AppSize.height(800)),
                 Container(
                   margin: EdgeInsets.only(
                       top: AppSize.height(380),
@@ -121,7 +121,7 @@ class _RegisteredState extends State<Registered> {
                       ),
                       InkWell(
                         child: Container(
-                          width: Screen.width(),
+                          width: Screen.width,
                           margin: EdgeInsets.symmetric(
                               vertical: AppSize.height(30)),
                           padding: EdgeInsets.symmetric(
@@ -188,7 +188,7 @@ class _RegisteredState extends State<Registered> {
                   ),
                 ),
                 Positioned(
-                  width: Screen.width(),
+                  width: Screen.width,
                   top: AppSize.height(320),
                   child: Column(
                     mainAxisSize: MainAxisSize.min,
@@ -205,7 +205,7 @@ class _RegisteredState extends State<Registered> {
                   ),
                 ),
                 Positioned(
-                  top: Screen.statusH() + AppSize.height(30),
+                  top: Screen.statusH + AppSize.height(30),
                   left: AppSize.width(30),
                   child: InkWell(
                       onTap: () {

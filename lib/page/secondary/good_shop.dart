@@ -54,7 +54,7 @@ class _GoodShopState extends State<GoodShop> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: MyAppBar(
-            preferredSize: Size.fromHeight(AppSize.height(160)),
+            height: AppSize.height(160),
             child: CommonBackTopBar(title: "星选好店",
                 onBack:()=>Navigator.pop(context))
         ),

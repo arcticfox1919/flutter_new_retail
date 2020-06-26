@@ -51,7 +51,7 @@ class _FindingsPageState extends State<FindingsPage>
     popupWindow = PopupWindow(context);
     return Scaffold(
       appBar: MyAppBar(
-        preferredSize: Size.fromHeight(AppSize.height(160)),
+        height: AppSize.height(160),
         child: CommonTopBar(title: "发现"),
       ),
       body: Container(
@@ -170,7 +170,7 @@ class _FindingTabViewState extends State<FindingTabView> with AutomaticKeepAlive
     }
   }
 
-  _getContent(){
+  _buildContent(){
     if(_isLoading){
       return Center(
         child: CircularProgressIndicator(),
@@ -209,7 +209,7 @@ class _FindingTabViewState extends State<FindingTabView> with AutomaticKeepAlive
   @override
   Widget build(BuildContext context) {
     super.build(context);
-    return _getContent();
+    return _buildContent();
   }
 
 
@@ -229,7 +229,7 @@ class _FindingTabViewState extends State<FindingTabView> with AutomaticKeepAlive
 
   void onItemClick(int i){
     int id = goodsList[i].id;
-    Routes.instance.navigateTo(context, Routes.PRODUCT_DETAILS,id.toString());
+    Routes.instance.navigateTo(context, Routes.product_details,id.toString());
   }
 
   @override

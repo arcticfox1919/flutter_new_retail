@@ -8,15 +8,11 @@ import 'config.dart';
 
 
 
-
-const FINDING_URL = '$SERVER_HOST/api/goods';
-
-
 class FindingsDao{
 
   static Future<GoodsEntity> fetch() async{
     try {
-      Response response = await Dio().get(FINDING_URL);
+      Response response = await Dio().get(FindingUrl);
 
       if(response.statusCode == 200){
         return EntityFactory.generateOBJ<GoodsEntity>(response.data);

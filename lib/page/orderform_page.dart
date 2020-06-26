@@ -66,7 +66,7 @@ class _OrderFormPageState extends State<OrderFormPage> with AutomaticKeepAliveCl
     super.build(context);
     return Scaffold(
       appBar: MyAppBar(
-        preferredSize: Size.fromHeight(AppSize.height(160)),
+        height: AppSize.height(160),
         child: CommonTopBar(title: "订单"),
       ),
       body: Container(
@@ -192,7 +192,7 @@ class _OrderFormTabViewState extends State<OrderFormTabView> {
   }
 
   void navigate(int id){
-      Routes.instance.navigateTo(context, Routes.ORDER_DETAILS,id.toString());
+      Routes.instance.navigateTo(context, Routes.order_details,id.toString());
   }
 }
 

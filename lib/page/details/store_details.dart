@@ -74,7 +74,7 @@ class _StoreDetailsState extends State<StoreDetails> {
         children: <Widget>[
           _createHeadInfo(),
           Container(
-            width: Screen.width(),
+            width: Screen.width,
             padding: EdgeInsets.symmetric(vertical: AppSize.height(20)),
             color: Colors.white,
             margin: EdgeInsets.only(top: AppSize.height(30)),
@@ -123,12 +123,12 @@ class _StoreDetailsState extends State<StoreDetails> {
                 imageUrl: data.products[0].img,
                 fit: BoxFit.fill,
                 height: AppSize.height(450),
-                width: Screen.width()),
+                width: Screen.width),
             Container(
               height: AppSize.height(450),
               color: Color.fromRGBO(0, 0, 0, 0.5),
               padding: EdgeInsets.only(
-                  top: Screen.statusH(),
+                  top: Screen.statusH,
                   right: AppSize.width(30),
                   left: AppSize.width(30)),
               child: Column(
@@ -338,6 +338,6 @@ class _StoreDetailsState extends State<StoreDetails> {
 
   void onItemClick(int i){
     int id = goodsList[i].id;
-    Routes.instance.navigateTo(context, Routes.PRODUCT_DETAILS,id.toString());
+    Routes.instance.navigateTo(context, Routes.product_details,id.toString());
   }
 }

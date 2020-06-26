@@ -18,7 +18,7 @@ class _PointsLotteryState extends State<PointsLottery> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: MyAppBar(
-            preferredSize: Size.fromHeight(AppSize.height(160)),
+            height: AppSize.height(160),
             child: CommonBackTopBar(title: "积分抽奖",
                 onBack:()=>Navigator.pop(context))
         ),

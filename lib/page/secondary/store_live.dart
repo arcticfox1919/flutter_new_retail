@@ -20,7 +20,7 @@ class _StoreLiveState extends State<StoreLive> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: MyAppBar(
-            preferredSize: Size.fromHeight(AppSize.height(160)),
+            height: AppSize.height(160),
             child: CommonBackTopBar(title: "商家直播",
                 onBack:()=>Navigator.pop(context))
         ),

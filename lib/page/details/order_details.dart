@@ -45,10 +45,10 @@ class _OrderDetailsState extends State<OrderDetails> {
 
   @override
   Widget build(BuildContext context) {
-    final screenWidth = Screen.width();
+    final screenWidth = Screen.width;
     return Scaffold(
         appBar: MyAppBar(
-            preferredSize: Size.fromHeight(AppSize.height(160)),
+            height: AppSize.height(160),
             child: CommonBackTopBar(
                 title: "订单详情", onBack: () => Navigator.pop(context))),
         body: Container(

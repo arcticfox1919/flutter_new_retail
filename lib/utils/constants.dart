@@ -1,6 +1,6 @@
 
 
-import 'package:flutter/widgets.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_yjh/routes/routes.dart';
 
 const HEAD_NAV_TEXT = const <String>[
@@ -15,45 +15,27 @@ const HEAD_NAV_TEXT = const <String>[
 ];
 
 const HEAD_NAV_PATH = const <String>[
-  Routes.POINTS_MALL,
-  Routes.FAMOUS_BRAND,
-  Routes.NEARBY_BUSINESS,
-  Routes.FEMALE_CHANNEL,
-  Routes.STORE_LIVE,
-  Routes.INVITE_FRIENDS,
-  Routes.GOOD_SHOP,
+  Routes.points_mall,
+  Routes.famous_brand,
+  Routes.nearby_business,
+  Routes.female_channel,
+  Routes.store_live,
+  Routes.invite_friends,
+  Routes.good_shop,
   ""
 ];
 
 
 class Screen{
-  static double _w;
-  static double _statusH;
-
-  static void init(BuildContext c){
-    if(_w == null) {
-      MediaQueryData mqd = MediaQuery.of(c);
-
-      _w = mqd.size.width;
-      _statusH = mqd.padding.top;
-    }
-  }
-
-  static double width(){
-    if(_w != null){
-      return _w;
-    }
-    return 0;
+  static double get width {
+    return ScreenUtil.screenWidthDp;
   }
 
   ///
   /// 状态栏高度
   ///
-  static double statusH(){
-    if(_statusH != null){
-      return _statusH;
-    }
-    return 0;
+  static double get statusH{
+    return ScreenUtil.statusBarHeight;
   }
 
 }

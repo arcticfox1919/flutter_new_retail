@@ -54,7 +54,7 @@ class _PointsMallState extends State<PointsMall> with SingleTickerProviderStateM
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: MyAppBar(
-          preferredSize: Size.fromHeight(AppSize.height(160)),
+            height: AppSize.height(160),
           child: CommonBackTopBar(title: "积分商城",
               onBack:()=>Navigator.pop(context))
         ),

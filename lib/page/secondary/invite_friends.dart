@@ -35,7 +35,7 @@ class InviteFriends extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: MyAppBar(
-            preferredSize: Size.fromHeight(AppSize.height(160)),
+            height: AppSize.height(160),
             child: CommonBackTopBar(title: "邀请好友",
                 onBack:()=>Navigator.pop(context))
         ),

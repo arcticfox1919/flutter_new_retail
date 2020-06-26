@@ -18,7 +18,7 @@ class _CardVoucherPageState extends State<CardVoucherPage> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: MyAppBar(
-            preferredSize: Size.fromHeight(AppSize.height(160)),
+            height: AppSize.height(160),
             child: CommonBackTopBar(title: "我的卡券",
                 onBack:()=>Navigator.pop(context))
         ),

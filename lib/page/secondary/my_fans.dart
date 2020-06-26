@@ -18,7 +18,7 @@ class _MyFansPageState extends State<MyFansPage> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: MyAppBar(
-            preferredSize: Size.fromHeight(AppSize.height(160)),
+            height: AppSize.height(160),
             child: CommonBackTopBar(title: "我的粉丝",
                 onBack:()=>Navigator.pop(context))
         ),

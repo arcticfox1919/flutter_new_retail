@@ -28,21 +28,21 @@ import 'package:flutter_yjh/page/secondary/super_discount.dart';
 
 class Routes {
   static final Router router = new Router();
-  static const ROOT = '/';
-  static const POINTS_MALL = '/points_mall';
-  static const FAMOUS_BRAND = '/famous_brand';
-  static const NEARBY_BUSINESS = '/nearby_business';
-  static const FEMALE_CHANNEL = '/female_channel';
-  static const STORE_LIVE = '/store_live';
-  static const INVITE_FRIENDS = '/invite_friends';
-  static const GOOD_SHOP = '/good_shop';
-  static const POINTS_LOTTERY = '/points_lottery';
-  static const NEW_SHOP = '/new_shop';
-  static const SUPER_DISCOUNT = '/super_discount';
+  static const root = '/';
+  static const points_mall = '/points_mall';
+  static const famous_brand = '/famous_brand';
+  static const nearby_business = '/nearby_business';
+  static const female_channel = '/female_channel';
+  static const store_live = '/store_live';
+  static const invite_friends = '/invite_friends';
+  static const good_shop = '/good_shop';
+  static const points_lottery = '/points_lottery';
+  static const new_shop = '/new_shop';
+  static const super_discount = '/super_discount';
 
   // details
-  static const ORDER_DETAILS = '/order_details';
-  static const PRODUCT_DETAILS = '/product_details';
+  static const order_details = '/order_details';
+  static const product_details = '/product_details';
   static const store_details = '/store_details';
 
   // 个人中心二级界面
@@ -61,45 +61,45 @@ class Routes {
 
   void _config() {
     router.define(
-        ROOT, handler: Handler(handlerFunc: (context, params) => IndexPage()));
+        root, handler: Handler(handlerFunc: (context, params) => IndexPage()));
 
     router.define(
-        POINTS_MALL, handler: Handler(handlerFunc: (context, params) => PointsMall()));
+        points_mall, handler: Handler(handlerFunc: (context, params) => PointsMall()));
 
     router.define(
-        FAMOUS_BRAND, handler: Handler(handlerFunc: (context, params) => FamousBrand()));
+        famous_brand, handler: Handler(handlerFunc: (context, params) => FamousBrand()));
 
     router.define(
-        NEARBY_BUSINESS, handler: Handler(handlerFunc: (context, params) => NearbyBusiness()));
+        nearby_business, handler: Handler(handlerFunc: (context, params) => NearbyBusiness()));
 
     router.define(
-        FEMALE_CHANNEL, handler: Handler(handlerFunc: (context, params) => FemaleClassroom()));
+        female_channel, handler: Handler(handlerFunc: (context, params) => FemaleClassroom()));
 
     router.define(
-        STORE_LIVE, handler: Handler(handlerFunc: (context, params) => StoreLive()));
+        store_live, handler: Handler(handlerFunc: (context, params) => StoreLive()));
 
     router.define(
-        INVITE_FRIENDS, handler: Handler(handlerFunc: (context, params) => InviteFriends()));
+        invite_friends, handler: Handler(handlerFunc: (context, params) => InviteFriends()));
 
     router.define(
-        GOOD_SHOP, handler: Handler(handlerFunc: (context, params) => GoodShop()));
+        good_shop, handler: Handler(handlerFunc: (context, params) => GoodShop()));
 
     router.define(
-        POINTS_LOTTERY, handler: Handler(handlerFunc: (context, params) => PointsLottery()));
+        points_lottery, handler: Handler(handlerFunc: (context, params) => PointsLottery()));
 
     router.define(
-        NEW_SHOP, handler: Handler(handlerFunc: (context, params) => NewShop()));
+        new_shop, handler: Handler(handlerFunc: (context, params) => NewShop()));
 
     router.define(
-    '$ORDER_DETAILS/:id', handler: Handler(handlerFunc: (context, params) => OrderDetails(int.parse(params['id'][0]))));
+    '$order_details/:id', handler: Handler(handlerFunc: (context, params) => OrderDetails(int.parse(params['id'][0]))));
 
     router.define(
-        '$PRODUCT_DETAILS/:id', handler:
+        '$product_details/:id', handler:
     Handler(handlerFunc: (context, params) => ProductDetails(int.parse(params['id'][0]))));
 
 
     router.define(
-        SUPER_DISCOUNT, handler: Handler(handlerFunc: (context, params) => SuperDiscount()));
+        super_discount, handler: Handler(handlerFunc: (context, params) => SuperDiscount()));
 
     router.define(
         '$store_details/:id', handler: Handler(handlerFunc: (context, params) => StoreDetails(
@@ -156,12 +156,12 @@ class Routes {
   static Routes get instance => _getInstance();
   static Routes _instance;
 
-  Routes._internal() {
+  Routes._() {
     _config();
   }
   static Routes _getInstance() {
     if (_instance == null) {
-      _instance = new Routes._internal();
+      _instance = new Routes._();
     }
     return _instance;
   }

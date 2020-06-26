@@ -19,7 +19,7 @@ class _SuperDiscountState extends State<SuperDiscount> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: MyAppBar(
-            preferredSize: Size.fromHeight(AppSize.height(160)),
+            height: AppSize.height(160),
             child: CommonBackTopBar(title: "超值特惠",
                 onBack:()=>Navigator.pop(context))
         ),

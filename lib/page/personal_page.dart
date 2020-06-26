@@ -54,7 +54,7 @@ class _PersonalPageState extends State<PersonalPage>
       );
     }
 
-    final screenWidth = Screen.width();
+    final screenWidth = Screen.width;
     return Container(
         margin: EdgeInsets.only(bottom: AppSize.height(30)),
         height: AppSize.height(900),
@@ -328,7 +328,7 @@ class _PersonalPageState extends State<PersonalPage>
         Routes.instance.navigateTo(context, Routes.card_voucher);
         break;
       case '邀请好友':
-        Routes.instance.navigateTo(context, Routes.INVITE_FRIENDS);
+        Routes.instance.navigateTo(context, Routes.invite_friends);
         break;
       case '我的粉丝':
         Routes.instance.navigateTo(context, Routes.my_fans);
