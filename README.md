@@ -1,3 +1,7 @@
+
+
+[![Gitter](https://badges.gitter.im/bczl-flutter/community.svg)](https://gitter.im/bczl-flutter/community?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
+
 # flutter_new_retail
 
 ## 前言
@@ -49,5 +53,5 @@
 快速上手篇可试看
 ![](https://imgconvert.csdnimg.cn/aHR0cHM6Ly9naXRlZS5jb20vYXJjdGljZm94MTkxOS9JbWFnZUhvc3RpbmcvcmF3L21hc3Rlci9pbWcvNzdmMjA1NGUyOGFkYjgzM2I0MDA4NjNlNzIyOTgwM2IucG5n?x-oss-process=image/format,png)
 
-# 欢迎关注我的公众号：编程之路从0到1
+# 关注公众号：编程之路从0到1
 ![编程之路从0到1](https://img-blog.csdnimg.cn/20190301102949549.jpg)
