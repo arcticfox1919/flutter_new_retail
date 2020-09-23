@@ -50,7 +50,7 @@
 ![二维码](https://imgconvert.csdnimg.cn/aHR0cHM6Ly9naXRlZS5jb20vYXJjdGljZm94MTkxOS9JbWFnZUhvc3RpbmcvcmF3L21hc3Rlci9pbWcvMjAyMDAyMTMyMTAxMDQ5MTYucG5n?x-oss-process=image/format,png)
 
 [Flutter 全栈式开发指南](https://study.163.com/course/courseMain.htm?courseId=1210111872&share=2&shareId=480000001855430)
-快速上手篇可试看
+
 ![](https://imgconvert.csdnimg.cn/aHR0cHM6Ly9naXRlZS5jb20vYXJjdGljZm94MTkxOS9JbWFnZUhvc3RpbmcvcmF3L21hc3Rlci9pbWcvNzdmMjA1NGUyOGFkYjgzM2I0MDA4NjNlNzIyOTgwM2IucG5n?x-oss-process=image/format,png)
 
 # 关注公众号：编程之路从0到1
