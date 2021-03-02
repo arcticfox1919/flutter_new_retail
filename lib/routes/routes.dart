@@ -1,5 +1,5 @@
 import 'package:fluro/fluro.dart';
-import 'package:flutter/material.dart';
+import 'package:flutter/material.dart' hide Router;
 import 'package:flutter_yjh/page/details/order_details.dart';
 import 'package:flutter_yjh/page/details/product_details.dart';
 import 'package:flutter_yjh/page/details/store_details.dart';
