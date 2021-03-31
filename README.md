@@ -44,14 +44,11 @@
 
 
 # 视频课程
-博主发布的相关视频课程
+如需要获取博主完整的**Flutter全栈式开发课程**，请 [**点击跳转**](http://m.study.163.com/provider/480000001855430/index.htm?share=2&shareId=480000001855430)
 
-[Flutter全栈式开发之Dart 编程指南](https://study.163.com/course/courseMain.htm?courseId=1209508814&share=2&shareId=480000001855430)
-![二维码](https://imgconvert.csdnimg.cn/aHR0cHM6Ly9naXRlZS5jb20vYXJjdGljZm94MTkxOS9JbWFnZUhvc3RpbmcvcmF3L21hc3Rlci9pbWcvMjAyMDAyMTMyMTAxMDQ5MTYucG5n?x-oss-process=image/format,png)
+![qr_adv](https://img-blog.csdnimg.cn/img_convert/eb3c16913c155e08e1443a0029003aa1.png)
 
-[Flutter 全栈式开发指南](https://study.163.com/course/courseMain.htm?courseId=1210111872&share=2&shareId=480000001855430)
-
-![](https://imgconvert.csdnimg.cn/aHR0cHM6Ly9naXRlZS5jb20vYXJjdGljZm94MTkxOS9JbWFnZUhvc3RpbmcvcmF3L21hc3Rlci9pbWcvNzdmMjA1NGUyOGFkYjgzM2I0MDA4NjNlNzIyOTgwM2IucG5n?x-oss-process=image/format,png)
+**本项目内容包含在第二季课程《Flutter全栈式开发指南》**
 
 # 关注公众号：编程之路从0到1
 ![编程之路从0到1](https://img-blog.csdnimg.cn/20190301102949549.jpg)
