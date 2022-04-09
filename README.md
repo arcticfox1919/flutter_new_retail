@@ -20,18 +20,18 @@
 
 **以下展示几个主要界面**
 ## 四个主页
-![主页](https://gitee.com/arcticfox1919/ImageHosting/raw/master/home_gif.gif)
+![主页](https://picturehost.oss-cn-shenzhen.aliyuncs.com/home_gif.gif)
 
-![home1](https://gitee.com/arcticfox1919/ImageHosting/raw/master/home1.png)
+![home1](https://picturehost.oss-cn-shenzhen.aliyuncs.com/home1.png)
 
-![home2](https://gitee.com/arcticfox1919/ImageHosting/raw/master/home2.png)
+![home2](https://picturehost.oss-cn-shenzhen.aliyuncs.com/home2.png)
 
-![home3](https://gitee.com/arcticfox1919/ImageHosting/raw/master/home3.png)
+![home3](https://picturehost.oss-cn-shenzhen.aliyuncs.com/home3.png)
 
-![home4](https://gitee.com/arcticfox1919/ImageHosting/raw/master/home4.png)
+![home4](https://picturehost.oss-cn-shenzhen.aliyuncs.com/home4.png)
 
 ## 仿淘宝详情页
-![](https://gitee.com/arcticfox1919/ImageHosting/raw/master/details_gif.gif)
+![](https://picturehost.oss-cn-shenzhen.aliyuncs.com/details_gif.gif)
 
 ## 店铺
 ![](https://img-blog.csdnimg.cn/20190801203300152.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9hcmN0aWNmb3guYmxvZy5jc2RuLm5ldA==,size_16,color_FFFFFF,t_70)
