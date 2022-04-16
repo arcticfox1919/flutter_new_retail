@@ -2,6 +2,9 @@
 
 [![Gitter](https://badges.gitter.im/bczl-flutter/community.svg)](https://gitter.im/bczl-flutter/community?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
 
+# 更新
+
+已升级到支持空安全版本 ，可切换到仓库的 **null_safety** 分支
 # flutter_new_retail
 
 ## 前言
