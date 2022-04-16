@@ -9,7 +9,7 @@ import 'config.dart';
 
 class HomeDao{
 
-  static Future<StoreEntity> fetch() async{
+  static Future<StoreEntity?> fetch() async{
     try {
       Response response = await Dio().get(HomeUrl);
 

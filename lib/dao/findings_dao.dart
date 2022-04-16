@@ -10,7 +10,7 @@ import 'config.dart';
 
 class FindingsDao{
 
-  static Future<GoodsEntity> fetch() async{
+  static Future<GoodsEntity?> fetch() async{
     try {
       Response response = await Dio().get(FindingUrl);
 

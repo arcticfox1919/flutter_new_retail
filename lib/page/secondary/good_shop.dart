@@ -27,7 +27,7 @@ class _GoodShopState extends State<GoodShop> {
   GlobalKey<MaterialHeaderWidgetState> _headerKey = GlobalKey<MaterialHeaderWidgetState>();
   GlobalKey<MaterialFooterWidgetState> _footerKey = GlobalKey<MaterialFooterWidgetState>();
 
-  List<StoreModel> storeList = new List<StoreModel>();
+  List<StoreModel>? storeList = <StoreModel>[];
   bool _isLoading = false;
 
 
@@ -40,10 +40,10 @@ class _GoodShopState extends State<GoodShop> {
 
 
   void loadData() async{
-    StoreEntity stores = await HomeDao.fetch();
+    StoreEntity? stores = await HomeDao.fetch();
     if(stores?.stores != null){
       setState(() {
-        storeList = stores.stores;
+        storeList = stores!.stores;
         _isLoading = false;
       });
     }
@@ -82,10 +82,10 @@ class _GoodShopState extends State<GoodShop> {
               key: _footerKey,
             ),
             child: ListView.builder(
-                itemCount: storeList.length,
+                itemCount: storeList!.length,
                 itemBuilder: _buildItem),
             onRefresh: () async {
-              storeList = storeList.reversed.toList();
+              storeList = storeList!.reversed.toList();
               setState(()=>{});
             },
         ),
@@ -118,7 +118,7 @@ class _GoodShopState extends State<GoodShop> {
                         ),
 
                         Flexible(
-                          child: Text(storeList[i].name,
+                          child: Text(storeList![i].name!,
                             style: ThemeTextStyle.primaryStyle,
                             maxLines: 1,overflow: TextOverflow.clip,
                           ),
@@ -136,7 +136,7 @@ class _GoodShopState extends State<GoodShop> {
                   padding: EdgeInsets.only(right: AppSize.width(30)),
                   child: ClipRRect(
                     borderRadius: BorderRadius.circular(8),
-                    child: CachedNetworkImage(imageUrl: storeList[i].photo,
+                    child: CachedNetworkImage(imageUrl: storeList![i].photo!,
                         fit: BoxFit.cover,
                         width: AppSize.width(300), height: AppSize.height(250)),
                   ),

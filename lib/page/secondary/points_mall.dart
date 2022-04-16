@@ -33,7 +33,7 @@ class _PointsMallState extends State<PointsMall> with SingleTickerProviderStateM
     MallPageView(2),
   ];
 
-  TabController mController;
+  TabController? mController;
 
   @override
   void initState() {
@@ -104,7 +104,7 @@ class _MallPageViewState extends State<MallPageView> with AutomaticKeepAliveClie
 
   bool _isLoading = false;
 
-  List<GoodsModel> goodsList = new List<GoodsModel>();
+  List<GoodsModel> goodsList = <GoodsModel>[];
 
   @override
   void initState() {
@@ -114,10 +114,10 @@ class _MallPageViewState extends State<MallPageView> with AutomaticKeepAliveClie
   }
 
   void loadData() async{
-    GoodsEntity entity = await FindingsDao.fetch();
-    if(entity.goods != null){
+    GoodsEntity? entity = await FindingsDao.fetch();
+    if(entity != null && entity.goods != null){
       setState(() {
-        goodsList = entity.goods.sublist(widget.currentPage*30,entity.goods.length);
+        goodsList = entity.goods!.sublist(widget.currentPage*30,entity.goods!.length);
         _isLoading = false;
       });
     }

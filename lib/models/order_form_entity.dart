@@ -13,16 +13,16 @@ enum OrderForm{
 }
 
 abstract class OrderFormListItem {
-  int id;
-  String storeName;
-  String imgUrl;
-  String status;
-  String title;
-  double price;
-  int amount;
-  String weight;
-  double total;
-  OrderForm type;
+  int? id;
+  late String storeName;
+  late String imgUrl;
+  late String status;
+  late String title;
+  double? price;
+  int? amount;
+  late String weight;
+  double? total;
+  late OrderForm type;
 
   emptyInstance();
 }

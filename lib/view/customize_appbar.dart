@@ -11,9 +11,9 @@ class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
   final Size preferredSize;
 
   MyAppBar({
-    Key key,
-    @required this.child,
-    @required double height,
+    Key? key,
+    required this.child,
+    required double height,
   }) :  preferredSize = Size.fromHeight(height),
         super(key: key);
 

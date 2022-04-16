@@ -27,7 +27,7 @@ import 'package:flutter_yjh/page/secondary/store_live.dart';
 import 'package:flutter_yjh/page/secondary/super_discount.dart';
 
 class Routes {
-  static final Router router = new Router();
+  static final FluroRouter router = new FluroRouter();
   static const root = '/';
   static const points_mall = '/points_mall';
   static const famous_brand = '/famous_brand';
@@ -91,11 +91,11 @@ class Routes {
         new_shop, handler: Handler(handlerFunc: (context, params) => NewShop()));
 
     router.define(
-    '$order_details/:id', handler: Handler(handlerFunc: (context, params) => OrderDetails(int.parse(params['id'][0]))));
+    '$order_details/:id', handler: Handler(handlerFunc: (context, params) => OrderDetails(int.parse(params['id']![0]))));
 
     router.define(
         '$product_details/:id', handler:
-    Handler(handlerFunc: (context, params) => ProductDetails(int.parse(params['id'][0]))));
+    Handler(handlerFunc: (context, params) => ProductDetails(int.parse(params['id']![0]))));
 
 
     router.define(
@@ -103,7 +103,7 @@ class Routes {
 
     router.define(
         '$store_details/:id', handler: Handler(handlerFunc: (context, params) => StoreDetails(
-        int.parse(params['id'][0]))));
+        int.parse(params['id']![0]))));
 
     // 个人中心二级界面
     router.define(
@@ -152,14 +152,14 @@ class Routes {
     return router.navigateTo(context,p,transition: TransitionType.inFromBottom);
   }
 
-  factory Routes() =>_getInstance();
-  static Routes get instance => _getInstance();
-  static Routes _instance;
+  factory Routes() =>_getInstance()!;
+  static Routes? get instance => _getInstance();
+  static Routes? _instance;
 
   Routes._() {
     _config();
   }
-  static Routes _getInstance() {
+  static Routes? _getInstance() {
     if (_instance == null) {
       _instance = new Routes._();
     }

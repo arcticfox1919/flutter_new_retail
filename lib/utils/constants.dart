@@ -28,14 +28,14 @@ const HEAD_NAV_PATH = const <String>[
 
 class Screen{
   static double get width {
-    return ScreenUtil.screenWidthDp;
+    return ScreenUtil().screenWidth;
   }
 
   ///
   /// 状态栏高度
   ///
   static double get statusH{
-    return ScreenUtil.statusBarHeight;
+    return ScreenUtil().statusBarHeight;
   }
 
 }

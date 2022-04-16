@@ -5,7 +5,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 class AppSize{
 
   static init(BuildContext context){
-    ScreenUtil.init(context);
+    ScreenUtil.init(context,designSize: Size(1080, 1920));
   }
 
   static height(value){

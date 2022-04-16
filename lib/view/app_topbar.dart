@@ -62,7 +62,7 @@ class CommonTopBar extends StatelessWidget {
   final String title;
 
   CommonTopBar({
-    @required this.title
+    required this.title
 });
 
   @override
@@ -74,10 +74,10 @@ class CommonTopBar extends StatelessWidget {
 
 class CommonBackTopBar extends StatelessWidget {
   final String title;
-  final Function onBack;
+  final Function? onBack;
 
   CommonBackTopBar({
-    @required this.title,
+    required this.title,
     this.onBack
   });
 
@@ -88,7 +88,7 @@ class CommonBackTopBar extends StatelessWidget {
         Center(child: Text(title,
             style: TextStyle(color: Colors.white,fontSize: AppSize.sp(52)))),
         InkWell(
-          onTap: onBack,
+          onTap: onBack as void Function()?,
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             mainAxisSize: MainAxisSize.max,
@@ -105,8 +105,8 @@ class CommonBackTopBar extends StatelessWidget {
 }
 
 class CustomBackBar extends StatelessWidget {
-  final Function onBack;
-  final Function onAction;
+  final Function? onBack;
+  final Function? onAction;
 
   CustomBackBar({
     this.onBack,
@@ -119,7 +119,7 @@ class CustomBackBar extends StatelessWidget {
       children: <Widget>[
         Center(
             child: InkWell(
-              onTap: onAction,
+              onTap: onAction as void Function()?,
               child: Container(
                 width: AppSize.width(750),
                 height: AppSize.height(72),
@@ -141,7 +141,7 @@ class CustomBackBar extends StatelessWidget {
               ),
             )),
         InkWell(
-          onTap: onBack,
+          onTap: onBack as void Function()?,
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             mainAxisSize: MainAxisSize.max,

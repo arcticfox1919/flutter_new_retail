@@ -21,7 +21,7 @@ class _LoginState extends State<Login> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      resizeToAvoidBottomPadding: false,
+      resizeToAvoidBottomInset: false,
       body: Container(
         color: ThemeColor.appBg,
         child: MediaQuery.removePadding(
@@ -127,7 +127,7 @@ class _LoginState extends State<Login> {
 
                           InkWell(
                             onTap: (){
-                              Routes.instance.navigateFromBottom(context, Routes.registered_page);
+                              Routes.instance!.navigateFromBottom(context, Routes.registered_page);
                             },
                             child: Text('新用户注册',style: TextStyle(
                                 fontSize: AppSize.sp(36),

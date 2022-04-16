@@ -1,7 +1,7 @@
+import 'package:card_swiper/card_swiper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_easyrefresh/easy_refresh.dart';
-import 'package:flutter_swiper/flutter_swiper.dart';
 import 'package:flutter_yjh/dao/home_dao.dart';
 import 'package:flutter_yjh/models/home_entity.dart';
 import 'package:flutter_yjh/models/store_entity.dart';
@@ -21,7 +21,7 @@ class HomePage extends StatefulWidget{
 
 class _HomePageState extends State<HomePage>  with AutomaticKeepAliveClientMixin{
 
-  List<HomeListItem> homeList;
+  List<HomeListItem>? homeList;
 
   @override
   Widget build(BuildContext context) {
@@ -53,7 +53,7 @@ class _HomePageState extends State<HomePage>  with AutomaticKeepAliveClientMixin
   ///  构建列表主体
   ///
   Widget _buildList(){
-    List<HomeListItem> data = homeList;
+    List<HomeListItem>? data = homeList;
     return EasyRefresh(
         header: ClassicalHeader(
           bgColor: ThemeColor.appBarBottomBg,
@@ -85,7 +85,7 @@ class _HomePageState extends State<HomePage>  with AutomaticKeepAliveClientMixin
         child: ListView.builder(
           itemCount: data?.length,
           itemBuilder: (context, i) {
-            if (data[i] is HeadMenuItem) {
+            if (data![i] is HeadMenuItem) {
               return _createHeadNav();
             } else if (data[i] is ScrollMenuItem) {
               return _createScrollNav();
@@ -423,7 +423,7 @@ class _HomePageState extends State<HomePage>  with AutomaticKeepAliveClientMixin
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: <Widget>[
-              Text(item.name, style: ThemeTextStyle.primaryStyle),
+              Text(item.name!, style: ThemeTextStyle.primaryStyle),
               Row(
                 mainAxisSize: MainAxisSize.min,
                 crossAxisAlignment: CrossAxisAlignment.center,
@@ -516,12 +516,12 @@ class _HomePageState extends State<HomePage>  with AutomaticKeepAliveClientMixin
   }
 
   void navigate(String name){
-    int i = HEAD_NAV_TEXT.indexOf(name);
+    // int i = HEAD_NAV_TEXT.indexOf(name);
   }
 
   void loadData() async {
-    StoreEntity stores =  await HomeDao.fetch();
-    var result = List<HomeListItem>();
+    StoreEntity? stores =  await HomeDao.fetch();
+    var result = <HomeListItem>[];
     result.add(HeadMenuItem());
     result.add(ScrollMenuItem());
     result.add(GridMenuItem());
@@ -529,7 +529,7 @@ class _HomePageState extends State<HomePage>  with AutomaticKeepAliveClientMixin
     result.add(OfferItem());
 
     if(stores != null) {
-      result.addAll(stores.stores);
+      result.addAll(stores.stores!);
     }
 
     setState(() {

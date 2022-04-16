@@ -17,7 +17,7 @@ class PersonalPage extends StatefulWidget {
 
 class _PersonalPageState extends State<PersonalPage>
     with AutomaticKeepAliveClientMixin {
-  List<Widget> contentList;
+  List<Widget>? contentList;
 
   @override
   void initState() {
@@ -25,14 +25,14 @@ class _PersonalPageState extends State<PersonalPage>
     print("--*-- _PersonalPageState");
   }
 
-  List<Widget> generateList(BuildContext ctx) {
+  List<Widget>? generateList(BuildContext ctx) {
     if (contentList == null) {
-      contentList = new List<Widget>();
-      contentList.add(createHeadInfo(ctx));
-      contentList.add(createCardNav_1());
-      contentList.add(createAdBar());
-      contentList.add(createCardNav_2());
-      contentList.add(createToolBar());
+      contentList = <Widget>[];
+      contentList!.add(createHeadInfo(ctx));
+      contentList!.add(createCardNav_1());
+      contentList!.add(createAdBar());
+      contentList!.add(createCardNav_2());
+      contentList!.add(createToolBar());
     }
     return contentList;
   }
@@ -166,7 +166,7 @@ class _PersonalPageState extends State<PersonalPage>
       "images/card_coupon.png"
     ];
 
-    var imageBtns = List<Widget>();
+    var imageBtns = <Widget>[];
     for (int i = 0; i < path.length; i++) {
       imageBtns.add(ImageButton(path[i],
           text: title[i], func: navigateTo,
@@ -204,7 +204,7 @@ class _PersonalPageState extends State<PersonalPage>
       "images/reward.png"
     ];
 
-    var imageBtns = List<Widget>();
+    var imageBtns = <Widget>[];
     for (int i = 0; i < path.length; i++) {
       imageBtns.add(ImageButton(path[i],func: navigateTo,
           text: title[i], textStyle: ThemeTextStyle.menuStyle2));
@@ -250,7 +250,7 @@ class _PersonalPageState extends State<PersonalPage>
     _getImgBtns(int op) {
       int i = op == 0 ? 0 : 4;
       int offset = 4 - i;
-      var imageBtns = List<Widget>();
+      var imageBtns = <Widget>[];
       for (; i < path.length - offset; i++) {
         imageBtns.add(ImageButton(path[i],func: navigateTo,
             text: title[i], textStyle: ThemeTextStyle.menuStyle2));
@@ -301,7 +301,7 @@ class _PersonalPageState extends State<PersonalPage>
         child: MediaQuery.removePadding(
           context: context,
           removeTop: true,
-          child: ListView(children: generateList(context),
+          child: ListView(children: generateList(context)!,
               physics:ClampingScrollPhysics()
           ),
         ));
@@ -310,37 +310,37 @@ class _PersonalPageState extends State<PersonalPage>
   void navigateTo(String lab){
     switch(lab){
       case '收藏':
-        Routes.instance.navigateTo(context, Routes.favorite_page);
+        Routes.instance!.navigateTo(context, Routes.favorite_page);
         break;
       case '关注':
-        Routes.instance.navigateTo(context, Routes.follow_page);
+        Routes.instance!.navigateTo(context, Routes.follow_page);
         break;
       case '积分':
-        Routes.instance.navigateTo(context, Routes.my_scores);
+        Routes.instance!.navigateTo(context, Routes.my_scores);
         break;
       case '完善资料':
-        Routes.instance.navigateTo(context, Routes.edit_profile);
+        Routes.instance!.navigateTo(context, Routes.edit_profile);
         break;
       case '门店/推荐人':
-        Routes.instance.navigateTo(context, Routes.shop_referrer);
+        Routes.instance!.navigateTo(context, Routes.shop_referrer);
         break;
       case '我的卡券':
-        Routes.instance.navigateTo(context, Routes.card_voucher);
+        Routes.instance!.navigateTo(context, Routes.card_voucher);
         break;
       case '邀请好友':
-        Routes.instance.navigateTo(context, Routes.invite_friends);
+        Routes.instance!.navigateTo(context, Routes.invite_friends);
         break;
       case '我的粉丝':
-        Routes.instance.navigateTo(context, Routes.my_fans);
+        Routes.instance!.navigateTo(context, Routes.my_fans);
         break;
       case '收益记录':
-        Routes.instance.navigateTo(context, Routes.income_record);
+        Routes.instance!.navigateTo(context, Routes.income_record);
         break;
       case '门店奖励':
-        Routes.instance.navigateTo(context, Routes.shop_reward);
+        Routes.instance!.navigateTo(context, Routes.shop_reward);
         break;
       case '登录账号':
-        Routes.instance.navigateFromBottom(context, Routes.login_page);
+        Routes.instance!.navigateFromBottom(context, Routes.login_page);
         break;
     }
   }

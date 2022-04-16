@@ -16,12 +16,12 @@ class MyScoresPage extends StatefulWidget {
 
 class _MyScoresPageState extends State<MyScoresPage> {
 
-  List<ScoresEntity> scoresList;
+  late List<ScoresEntity> scoresList;
 
 
   @override
   void initState() {
-    scoresList = new List<ScoresEntity>();
+    scoresList = <ScoresEntity>[];
     scoresList.add(ScoresEntity()
       ..title='兑换商品'
       ..date='2019-05-01  15:23:26'
@@ -99,8 +99,8 @@ class _MyScoresPageState extends State<MyScoresPage> {
 }
 
 class ScoresEntity{
-  String title;
-  String date;
-  String value;
-  Color color;
+  late String title;
+  late String date;
+  late String value;
+  Color? color;
 }

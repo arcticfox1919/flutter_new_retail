@@ -21,7 +21,7 @@ class _RegisteredState extends State<Registered> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      resizeToAvoidBottomPadding: false,
+      resizeToAvoidBottomInset: false,
       body: Container(
         color: ThemeColor.appBg,
         child: MediaQuery.removePadding(

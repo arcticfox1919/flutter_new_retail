@@ -30,11 +30,11 @@ class _OrderFormPageState extends State<OrderFormPage> with AutomaticKeepAliveCl
     Tab(text: '售后'),
   ];
 
-  final ValueNotifier<OrderFormEntity> orderFormData
-  = ValueNotifier<OrderFormEntity>(null);
+  final ValueNotifier<OrderFormEntity?> orderFormData
+  = ValueNotifier<OrderFormEntity?>(null);
 
 
-  List<Widget> bodys;
+  late List<Widget> bodys;
 
   _initTabView(){
     bodys = List<Widget>.generate(myTabs.length, (i){
@@ -43,7 +43,7 @@ class _OrderFormPageState extends State<OrderFormPage> with AutomaticKeepAliveCl
   }
 
 
-  TabController mController;
+  TabController? mController;
 
   @override
   void initState() {
@@ -112,7 +112,7 @@ class _OrderFormPageState extends State<OrderFormPage> with AutomaticKeepAliveCl
 }
 
 class OrderFormTabView extends StatefulWidget {
-  final ValueNotifier<OrderFormEntity> data;
+  final ValueNotifier<OrderFormEntity?> data;
   final int currentIndex;
 
   OrderFormTabView(this.currentIndex,this.data);
@@ -125,7 +125,7 @@ class _OrderFormTabViewState extends State<OrderFormTabView> {
   GlobalKey<MaterialHeaderWidgetState> _headerKey = GlobalKey<MaterialHeaderWidgetState>();
   GlobalKey<MaterialFooterWidgetState> _footerKey = GlobalKey<MaterialFooterWidgetState>();
 
-  List<OrderFormListItem> listData;
+  List<OrderFormListItem>? listData;
 
   @override
   void initState() {
@@ -140,9 +140,9 @@ class _OrderFormTabViewState extends State<OrderFormTabView> {
     super.dispose();
   }
 
-  List<OrderFormListItem> _getDataList(){
+  List<OrderFormListItem>? _getDataList(){
     var itemList = widget.data.value !=null ?
-        widget.data.value.items : <OrderFormListItem>[];
+        widget.data.value!.items : <OrderFormListItem>[];
 
     switch(widget.currentIndex){
       case 0:
@@ -181,18 +181,18 @@ class _OrderFormTabViewState extends State<OrderFormTabView> {
 
         },
         child: ListView.builder(
-            itemCount: listData.length,
+            itemCount: listData!.length,
             itemBuilder: (context, i) {
               return InkWell(
-                onTap: ()=>navigate(listData[i].id),
-                  child: OrderFormCard(item: listData[i]));
+                onTap: ()=>navigate(listData![i].id),
+                  child: OrderFormCard(item: listData![i]));
             }),
       ),
     );
   }
 
-  void navigate(int id){
-      Routes.instance.navigateTo(context, Routes.order_details,id.toString());
+  void navigate(int? id){
+      Routes.instance!.navigateTo(context, Routes.order_details,id.toString());
   }
 }
 

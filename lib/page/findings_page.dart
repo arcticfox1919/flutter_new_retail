@@ -42,8 +42,8 @@ class _FindingsPageState extends State<FindingsPage>
     FindingTabView(5),
   ];
 
-  TabController mController;
-  PopupWindow popupWindow;
+  TabController? mController;
+  late PopupWindow popupWindow;
 
   @override
   Widget build(BuildContext context) {
@@ -126,7 +126,7 @@ class _FindingsPageState extends State<FindingsPage>
   @override
   void dispose() {
     super.dispose();
-    mController.dispose();
+    mController!.dispose();
   }
 
   @override
@@ -150,7 +150,7 @@ class _FindingTabViewState extends State<FindingTabView> with AutomaticKeepAlive
   GlobalKey<MaterialHeaderWidgetState> _headerKey = GlobalKey<MaterialHeaderWidgetState>();
   GlobalKey<MaterialFooterWidgetState> _footerKey = GlobalKey<MaterialFooterWidgetState>();
 
-  List<GoodsModel> goodsList = new List<GoodsModel>();
+  List<GoodsModel> goodsList = <GoodsModel>[];
   bool _isLoading = false;
 
   @override
@@ -161,10 +161,10 @@ class _FindingTabViewState extends State<FindingTabView> with AutomaticKeepAlive
   }
 
   void loadData() async{
-    GoodsEntity entity = await FindingsDao.fetch();
+    GoodsEntity? entity = await FindingsDao.fetch();
     if(entity?.goods != null){
       setState(() {
-        goodsList = entity.goods.sublist(widget.currentPage*30,entity.goods.length);
+        goodsList = entity!.goods!.sublist(widget.currentPage*30,entity.goods!.length);
         _isLoading = false;
       });
     }
@@ -228,8 +228,8 @@ class _FindingTabViewState extends State<FindingTabView> with AutomaticKeepAlive
   }
 
   void onItemClick(int i){
-    int id = goodsList[i].id;
-    Routes.instance.navigateTo(context, Routes.product_details,id.toString());
+    int? id = goodsList[i].id;
+    Routes.instance!.navigateTo(context, Routes.product_details,id.toString());
   }
 
   @override
@@ -242,8 +242,8 @@ class _FindingTabViewState extends State<FindingTabView> with AutomaticKeepAlive
 ///
 class PopupWindow {
   BuildContext ctx;
-  OverlayState overlayState;
-  OverlayEntry overlayEntry;
+  OverlayState? overlayState;
+  OverlayEntry? overlayEntry;
 
   PopupWindow(this.ctx) {
     overlayState = Overlay.of(this.ctx);
@@ -275,7 +275,7 @@ class PopupWindow {
         ),
       );
     });
-    overlayState.insert(overlayEntry);
+    overlayState!.insert(overlayEntry!);
   }
 
   dismiss() {

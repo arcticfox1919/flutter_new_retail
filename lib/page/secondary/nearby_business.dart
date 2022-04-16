@@ -24,7 +24,7 @@ class _NearbyBusinessState extends State<NearbyBusiness> {
   GlobalKey<MaterialHeaderWidgetState> _headerKey = GlobalKey<MaterialHeaderWidgetState>();
   GlobalKey<MaterialFooterWidgetState> _footerKey = GlobalKey<MaterialFooterWidgetState>();
 
-  List<StoreModel> storeList = new List<StoreModel>();
+  List<StoreModel>? storeList = <StoreModel>[];
   bool _isLoading = false;
 
 
@@ -37,10 +37,10 @@ class _NearbyBusinessState extends State<NearbyBusiness> {
 
 
   void loadData() async{
-    StoreEntity stores = await HomeDao.fetch();
+    StoreEntity? stores = await HomeDao.fetch();
     if(stores?.stores != null){
       setState(() {
-        storeList = stores.stores;
+        storeList = stores!.stores;
         _isLoading = false;
       });
     }
@@ -78,10 +78,10 @@ class _NearbyBusinessState extends State<NearbyBusiness> {
               key: _footerKey,
             ),
             child: ListView.builder(
-                itemCount: storeList.length,
+                itemCount: storeList!.length,
                 itemBuilder: _buildItem),
             onRefresh: () async {
-              storeList = storeList.reversed.toList();
+              storeList = storeList!.reversed.toList();
               setState(()=>{});
             },
         ),
@@ -105,7 +105,7 @@ class _NearbyBusinessState extends State<NearbyBusiness> {
                 children: <Widget>[
                   Padding(
                     padding: EdgeInsets.only(right: AppSize.width(40)),
-                    child: CachedNetworkImage(imageUrl: storeList[i].photo,
+                    child: CachedNetworkImage(imageUrl: storeList![i].photo!,
                         fit: BoxFit.cover,
                         width: AppSize.width(170), height: AppSize.width(170)),
                   ),
@@ -116,7 +116,7 @@ class _NearbyBusinessState extends State<NearbyBusiness> {
                       children: <Widget>[
                         Padding(
                           padding: EdgeInsets.only(bottom: AppSize.height(30)),
-                          child: Text(storeList[i].name,
+                          child: Text(storeList![i].name!,
                               maxLines: 2,
                               overflow: TextOverflow.clip,
                               style: ThemeTextStyle.primaryStyle),

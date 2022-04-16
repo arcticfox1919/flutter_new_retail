@@ -29,8 +29,8 @@ class _StoreDetailsState extends State<StoreDetails> {
   final TextStyle descTextStyle =
       new TextStyle(color: Colors.white, fontSize: AppSize.sp(30));
 
-  StoreModel data;
-  List<GoodsModel> goodsList = new List<GoodsModel>();
+  StoreModel? data;
+  List<GoodsModel> goodsList = <GoodsModel>[];
 
   @override
   void initState() {
@@ -39,16 +39,17 @@ class _StoreDetailsState extends State<StoreDetails> {
   }
 
   void loadData() async {
-    StoreEntity stores = await HomeDao.fetch();
+    StoreEntity? stores = await HomeDao.fetch();
 
-    GoodsEntity entity = await FindingsDao.fetch();
-    int i = Random().nextInt(entity.goods.length-1);
-    if(entity?.goods != null){
-        goodsList = entity.goods.sublist(i,entity.goods.length);
+    GoodsEntity? entity = await FindingsDao.fetch();
+    if(entity == null) return;
+    int i = Random().nextInt(entity.goods!.length-1);
+    if(entity.goods != null){
+        goodsList = entity.goods!.sublist(i,entity.goods!.length);
     }
 
     if (stores?.stores != null) {
-      stores.stores.forEach((el) {
+      stores!.stores!.forEach((el) {
         if (el.id == widget.id) {
           setState(() {
             data = el;
@@ -103,7 +104,7 @@ class _StoreDetailsState extends State<StoreDetails> {
                 SizedBox(
                   width: AppSize.width(230),
                   child: IconBtn(Icons.sentiment_satisfied,text: '客服',
-                    textStyle: ThemeTextStyle.menuStyle3,iconColor: ThemeColor.appBarTopBg),
+                    textStyle: ThemeTextStyle.menuStyle3,iconColor: ThemeColor.appBarTopBg, func: (_) {},),
                 )
               ],
             ),
@@ -120,7 +121,7 @@ class _StoreDetailsState extends State<StoreDetails> {
         Stack(
           children: <Widget>[
             CachedNetworkImage(
-                imageUrl: data.products[0].img,
+                imageUrl: data!.products![0].img!,
                 fit: BoxFit.fill,
                 height: AppSize.height(450),
                 width: Screen.width),
@@ -185,7 +186,7 @@ class _StoreDetailsState extends State<StoreDetails> {
                               decoration: BoxDecoration(
                                   border: Border.all(color: Colors.white)),
                               child: CachedNetworkImage(
-                                  imageUrl: data.photo,
+                                  imageUrl: data!.photo!,
                                   width: AppSize.width(150),
                                   height: AppSize.width(150)),
                             ),
@@ -193,7 +194,7 @@ class _StoreDetailsState extends State<StoreDetails> {
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: <Widget>[
-                                  Text(data.name,
+                                  Text(data!.name!,
                                       maxLines: 1,
                                       overflow: TextOverflow.clip,
                                       style: TextStyle(
@@ -337,7 +338,7 @@ class _StoreDetailsState extends State<StoreDetails> {
   }
 
   void onItemClick(int i){
-    int id = goodsList[i].id;
-    Routes.instance.navigateTo(context, Routes.product_details,id.toString());
+    int? id = goodsList[i].id;
+    Routes.instance!.navigateTo(context, Routes.product_details,id.toString());
   }
 }

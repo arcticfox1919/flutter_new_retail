@@ -32,13 +32,13 @@ class _ProductDetailsState extends State<ProductDetails> with SingleTickerProvid
     Tab(text: '详情'),
   ];
 
-  GoodsModel goodsModel;
+  GoodsModel? goodsModel;
 
   static const SCROLL_HEIGHT = 100;
   double appBarAlpha = 0;
   double backBtnAlpha = 0;
 
-  TabController mController;
+  TabController? mController;
   ScrollController listController = new ScrollController();
 
   @override
@@ -58,9 +58,9 @@ class _ProductDetailsState extends State<ProductDetails> with SingleTickerProvid
   }
 
   void loadData() async{
-    GoodsEntity entity = await FindingsDao.fetch();
+    GoodsEntity? entity = await FindingsDao.fetch();
     if(entity?.goods != null){
-      entity.goods.forEach((el){
+      entity!.goods!.forEach((el){
         if (el.id == widget.id){
           setState(() {
             goodsModel = el;
@@ -101,7 +101,7 @@ class _ProductDetailsState extends State<ProductDetails> with SingleTickerProvid
                     removeTop: true,
                     context: context,
                     child: NotificationListener(
-                        onNotification: (notification){
+                        onNotification: (dynamic notification){
                           if(notification is ScrollUpdateNotification
                               && notification.depth == 0){
                             _onScroll(notification.metrics.pixels);
@@ -196,14 +196,14 @@ class _ProductDetailsState extends State<ProductDetails> with SingleTickerProvid
                 Padding(
                   padding: EdgeInsets.symmetric(horizontal: AppSize.width(60)),
                   child: IconBtn(Icons.store,text: '店铺',textStyle:
-                  ThemeTextStyle.orderContentStyle,iconColor: ThemeColor.subTextColor),
+                  ThemeTextStyle.orderContentStyle,iconColor: ThemeColor.subTextColor, func: (_) {},),
                 ),
                 ThemeView.divider(orient: Orient.vertical),
 
                 Padding(
                   padding: EdgeInsets.symmetric(horizontal: AppSize.width(60)),
                   child: IconBtn(Icons.star_border,text: '收藏',textStyle:
-                  ThemeTextStyle.orderContentStyle,iconColor: ThemeColor.subTextColor),
+                  ThemeTextStyle.orderContentStyle,iconColor: ThemeColor.subTextColor, func: (_) {},),
                 ),
 
                 Expanded(
@@ -252,19 +252,19 @@ class _ProductDetailsState extends State<ProductDetails> with SingleTickerProvid
                 child: Row(children: <Widget>[
                   Padding(
                     padding:EdgeInsets.only(right: AppSize.width(30)),
-                    child: Image.network(goodsModel.photo,width: AppSize.width(220),height: AppSize.width(220)),
+                    child: Image.network(goodsModel!.photo!,width: AppSize.width(220),height: AppSize.width(220)),
                   ),
                   Expanded(
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: <Widget>[
-                      Text(goodsModel.name,
+                      Text(goodsModel!.name!,
                           maxLines: 2,
                           overflow: TextOverflow.clip,
                           style:ThemeTextStyle.primaryStyle),
                       Text.rich(
                           TextSpan(
-                              text: goodsModel.price,
+                              text: goodsModel!.price,
                               style: ThemeTextStyle.cardPriceStyle,
                               children: [
                                 TextSpan(
@@ -343,7 +343,7 @@ class _ProductDetailsState extends State<ProductDetails> with SingleTickerProvid
     return Column(
       children: <Widget>[
         CachedNetworkImage(
-            imageUrl: goodsModel.photo,
+            imageUrl: goodsModel!.photo!,
             fit: BoxFit.fill,
             height: Screen.width),
         Container(
@@ -352,7 +352,7 @@ class _ProductDetailsState extends State<ProductDetails> with SingleTickerProvid
               horizontal: AppSize.width(30)),
           child: Column(
             children: <Widget>[
-              Text(goodsModel.name,style:ThemeTextStyle.primaryStyle),
+              Text(goodsModel!.name!,style:ThemeTextStyle.primaryStyle),
               Padding(
                 padding: EdgeInsets.symmetric(vertical: AppSize.height(30)),
                 child: Row(
@@ -360,7 +360,7 @@ class _ProductDetailsState extends State<ProductDetails> with SingleTickerProvid
                   children: <Widget>[
                     Text.rich(
                         TextSpan(
-                            text: goodsModel.price,
+                            text: goodsModel!.price,
                             style: ThemeTextStyle.cardPriceStyle,
                             children: [
                               TextSpan(
@@ -498,19 +498,19 @@ class _ProductDetailsState extends State<ProductDetails> with SingleTickerProvid
 }
 
 class CustomFloatingActionButtonLocation extends FloatingActionButtonLocation{
-  factory CustomFloatingActionButtonLocation() =>_getInstance();
-  static CustomFloatingActionButtonLocation get instance => _getInstance();
-  static CustomFloatingActionButtonLocation _instance;
+  factory CustomFloatingActionButtonLocation() =>_getInstance()!;
+  static CustomFloatingActionButtonLocation? get instance => _getInstance();
+  static CustomFloatingActionButtonLocation? _instance;
 
-  double marginBottom;
-  double marginLeft;
+  late double marginBottom;
+  late double marginLeft;
 
   CustomFloatingActionButtonLocation._internal() {
     marginLeft = AppSize.width(30);
     marginBottom = AppSize.height(60+150);
   }
 
-  static CustomFloatingActionButtonLocation _getInstance() {
+  static CustomFloatingActionButtonLocation? _getInstance() {
     if (_instance == null) {
       _instance = new CustomFloatingActionButtonLocation._internal();
     }

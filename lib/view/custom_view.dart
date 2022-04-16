@@ -9,20 +9,20 @@ import 'flutter_iconfont.dart';
 typedef ImgBtnFunc = void Function(String);
 
 class ImageButton extends StatelessWidget {
-  double width;
-  double height;
-  double iconSize;
-  Color iconColor;
+  double? width;
+  double? height;
+  double? iconSize;
+  Color? iconColor;
 
   String assetPath;
   String text;
 
-  TextStyle textStyle;
+  TextStyle? textStyle;
   ImgBtnFunc func;
 
   ImageButton(this.assetPath,
-      {this.width, this.height, this.iconSize, this.text, this.textStyle
-      ,this.func});
+      {this.width, this.height, this.iconSize, required this.text, this.textStyle
+      ,required this.func});
 
   @override
   Widget build(BuildContext context) {
@@ -52,18 +52,18 @@ class ImageButton extends StatelessWidget {
 }
 
 class IconBtn extends StatelessWidget {
-  double iconSize;
-  Color iconColor;
+  double? iconSize;
+  Color? iconColor;
 
   final IconData icon;
   String text;
 
-  TextStyle textStyle;
+  TextStyle? textStyle;
   ImgBtnFunc func;
 
   IconBtn(this.icon,
-      {this.iconColor, this.text, this.textStyle
-        ,this.func});
+      {this.iconColor, required this.text, this.textStyle
+        ,required this.func});
 
   @override
   Widget build(BuildContext context) {
@@ -84,7 +84,7 @@ class IconBtn extends StatelessWidget {
 }
 
 class AvatarView extends StatelessWidget {
-  String imgPath;
+  String? imgPath;
 
   AvatarView({this.imgPath});
 
@@ -96,7 +96,7 @@ class AvatarView extends StatelessWidget {
       padding: EdgeInsets.all(4),
       child: ClipOval(
           child: Image.asset(
-            imgPath == null?"images/default_avatar.png":imgPath,
+            imgPath == null?"images/default_avatar.png":imgPath!,
         fit: BoxFit.cover,
       )),
       decoration: BoxDecoration(color: Colors.white, shape: BoxShape.circle),
@@ -129,10 +129,10 @@ class AdBarView extends StatelessWidget {
 }
 
 class ThemeCard extends StatelessWidget {
-  final String title;
-  final String price;
-  final String number;
-  final String imgUrl;
+  final String? title;
+  final String? price;
+  final String? number;
+  final String? imgUrl;
 
   ThemeCard({
     this.title,
@@ -153,19 +153,19 @@ class ThemeCard extends StatelessWidget {
           borderRadius: BorderRadius.only(
               topLeft: Radius.circular(8),
               topRight: Radius.circular(8)),
-          child:Image(image:CachedNetworkImageProvider(imgUrl),fit: BoxFit.cover,))
+          child:Image(image:CachedNetworkImageProvider(imgUrl!),fit: BoxFit.cover,))
           ,
           Padding(
-              child: Text(title,style: ThemeTextStyle.cardTitleStyle,
+              child: Text(title!,style: ThemeTextStyle.cardTitleStyle,
                   maxLines:2,overflow: TextOverflow.clip,
               ),
               padding: EdgeInsets.all(AppSize.width(30))),
           Padding(
               padding: EdgeInsets.only(left: AppSize.width(30)),
-              child:Text(price,style: ThemeTextStyle.cardPriceStyle)),
+              child:Text(price!,style: ThemeTextStyle.cardPriceStyle)),
           Padding(
               padding: EdgeInsets.only(left: AppSize.width(30)),
-              child:Text(number,style: ThemeTextStyle.cardNumStyle))
+              child:Text(number!,style: ThemeTextStyle.cardNumStyle))
         ],
       ),
     );
@@ -173,9 +173,9 @@ class ThemeCard extends StatelessWidget {
 }
 
 class ThemeBtnCard extends StatelessWidget {
-  final String title;
-  final String price;
-  final String imgUrl;
+  final String? title;
+  final String? price;
+  final String? imgUrl;
 
   ThemeBtnCard({
     this.title,
@@ -195,16 +195,16 @@ class ThemeBtnCard extends StatelessWidget {
               borderRadius: BorderRadius.only(
                   topLeft: Radius.circular(8),
                   topRight: Radius.circular(8)),
-              child:Image(image:CachedNetworkImageProvider(imgUrl),fit: BoxFit.cover,))
+              child:Image(image:CachedNetworkImageProvider(imgUrl!),fit: BoxFit.cover,))
           ,
           Padding(
-              child: Text(title,style: ThemeTextStyle.cardTitleStyle,
+              child: Text(title!,style: ThemeTextStyle.cardTitleStyle,
                 maxLines:2,overflow: TextOverflow.clip,
               ),
               padding: EdgeInsets.all(AppSize.width(30))),
           Padding(
               padding: EdgeInsets.only(left: AppSize.width(30)),
-              child:Text(price,style: ThemeTextStyle.cardPriceStyle)),
+              child:Text(price!,style: ThemeTextStyle.cardPriceStyle)),
           Padding(
               padding: EdgeInsets.only(left: AppSize.width(30)),
               child:Image.asset("images/exchange_btn.png",fit: BoxFit.cover))
@@ -220,7 +220,7 @@ class OrderFormCard extends StatelessWidget {
   final OrderFormListItem item;
 
   OrderFormCard({
-    @required
+    required
     this.item});
 
   Widget _buildOutBtn(String text){
@@ -231,7 +231,7 @@ class OrderFormCard extends StatelessWidget {
     );
   }
 
-  List<Widget> _buildBottomBtn() {
+  List<Widget>? _buildBottomBtn() {
     switch (item.type) {
       case OrderForm.payment:
         return <Widget>[_buildOutBtn("立即支付")];
@@ -344,7 +344,7 @@ class OrderFormCard extends StatelessWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.end,
                 crossAxisAlignment: CrossAxisAlignment.center,
-                children: _buildBottomBtn()),
+                children: _buildBottomBtn()!),
             )
         ],
       ),

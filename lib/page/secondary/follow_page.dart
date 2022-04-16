@@ -18,7 +18,7 @@ class FollowPage extends StatefulWidget {
 }
 
 class _FollowPageState extends State<FollowPage> {
-  List<StoreModel> storeList = new List<StoreModel>();
+  List<StoreModel>? storeList = <StoreModel>[];
   bool _isLoading = false;
 
   @override
@@ -29,10 +29,10 @@ class _FollowPageState extends State<FollowPage> {
   }
 
   void loadData() async{
-    StoreEntity stores = await HomeDao.fetch();
+    StoreEntity? stores = await HomeDao.fetch();
     if(stores?.stores != null){
       setState(() {
-        storeList = stores.stores;
+        storeList = stores!.stores;
         _isLoading = false;
       });
     }
@@ -61,17 +61,17 @@ class _FollowPageState extends State<FollowPage> {
         padding: EdgeInsets.only(top: AppSize.height(30)),
         color: Colors.white,
         child: ListView.builder(
-          itemCount: storeList.length,
+          itemCount: storeList!.length,
             itemBuilder: (context,i){
               return Dismissible(
-                key: Key(storeList[i].photo),
+                key: Key(storeList![i].photo!),
                 child: Column(
                   children: <Widget>[
                     ListTile(
                       leading: ClipOval(
-                          child:CachedNetworkImage(imageUrl: storeList[i].photo)
+                          child:CachedNetworkImage(imageUrl: storeList![i].photo!)
                       ),
-                      title: Text(storeList[i].name,style: ThemeTextStyle.primaryStyle,),
+                      title: Text(storeList![i].name!,style: ThemeTextStyle.primaryStyle,),
                     ),
                     Padding(
                       padding: EdgeInsets.symmetric(vertical: AppSize.height(30)),

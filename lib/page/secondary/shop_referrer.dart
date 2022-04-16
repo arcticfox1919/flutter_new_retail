@@ -25,18 +25,18 @@ class _ShopReferrerPageState extends State<ShopReferrerPage> with SingleTickerPr
     Tab(text: '我的推荐人'),
   ];
 
-  List<Widget> bodys;
+  List<Widget>? bodys;
 
-  StoreModel storeModel;
+  StoreModel? storeModel;
 
-  TabController mController;
+  TabController? mController;
 
 
   createBody(){
     if(bodys == null){
-      bodys = new List<_TabPage>();
-      bodys.add(_createShopPage());
-      bodys.add(_createReferrerPage());
+      bodys = <_TabPage>[];
+      bodys!.add(_createShopPage());
+      bodys!.add(_createReferrerPage());
     }
     return bodys;
   }
@@ -53,11 +53,11 @@ class _ShopReferrerPageState extends State<ShopReferrerPage> with SingleTickerPr
   }
 
   void loadData() async{
-    StoreEntity stores = await HomeDao.fetch();
+    StoreEntity? stores = await HomeDao.fetch();
     if(stores?.stores != null){
-      int i = Random().nextInt(stores.stores.length);
+      int i = Random().nextInt(stores!.stores!.length);
       setState(() {
-        storeModel = stores.stores[i];
+        storeModel = stores.stores![i];
       });
     }
   }
@@ -128,7 +128,7 @@ class _ShopReferrerPageState extends State<ShopReferrerPage> with SingleTickerPr
                   child: ClipRRect(
                   borderRadius:BorderRadius.circular(8),
                     child: CachedNetworkImage(
-                      imageUrl: storeModel.photo,
+                      imageUrl: storeModel!.photo!,
                       fit: BoxFit.cover,width: AppSize.width(200),height: AppSize.width(200)),
                   ),
                 ),
@@ -138,7 +138,7 @@ class _ShopReferrerPageState extends State<ShopReferrerPage> with SingleTickerPr
                     children: <Widget>[
                       Padding(
                         padding: EdgeInsets.only(bottom: AppSize.height(50)),
-                        child: Text(storeModel.name,
+                        child: Text(storeModel!.name!,
                             style: ThemeTextStyle.personalShopNameStyle),
                       ),
 
@@ -250,7 +250,7 @@ class _ShopReferrerPageState extends State<ShopReferrerPage> with SingleTickerPr
 }
 
 class _TabPage extends StatelessWidget {
-  final Widget child;
+  final Widget? child;
 
   _TabPage({this.child});
 
